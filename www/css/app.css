@@ -7,7 +7,7 @@
 }
 
 .login-header{
-    padding-bottom: 20px;   
+    padding-bottom: 20px;
 }
 
 .login-header-title{
@@ -20,7 +20,7 @@
 }
 
 .panel-riscos-dashboard {
-    padding-bottom: 5px !important; 
+    padding-bottom: 5px !important;
     padding-top: 6px !important;
 }
 
@@ -258,7 +258,7 @@ small {
 }
 
 .badge {
-    
+
 }
 
 .md-ink-ripple span {
@@ -271,7 +271,7 @@ small {
 }
 
 .help-block {
-    font-size: 12px;   
+    font-size: 12px;
     /*font-style: italic;*/
 }
 
@@ -281,7 +281,7 @@ small {
 }
 
 .help-block-error {
-    font-size: 12px;   
+    font-size: 12px;
     color: darkred;
     margin-top: 6px;
 }
@@ -341,12 +341,12 @@ small {
 }
 
 .md-primary {
-    color: #3d8cc5 !important;   
+    color: #3d8cc5 !important;
 }
 
 .scrollable {
-    max-height: 200px !important; 
-    overflow: scroll !important;   
+    max-height: 200px !important;
+    overflow: scroll !important;
 }
 
 i.glyphicon.small-icon {
@@ -354,8 +354,12 @@ i.glyphicon.small-icon {
     line-height: 10px;
 }
 
-hr { 
-    border-color: #ccc; 
+hr {
+    border-color: #ccc;
     opacity: 0.7;
     margin-top: 30px;
+}
+
+.principal-menu {
+    text-align: left !important;
 }

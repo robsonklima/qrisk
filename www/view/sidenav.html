@@ -2,24 +2,24 @@
    <section>
       <!-- side nav -->
       <md-sidenav class="md-accent-sidebar" md-component-id="left" md-disable-backdrop>
-          <!-- side nav title --> 
+          <!-- side nav title -->
           <md-toolbar>
             <h1 class="md-toolbar-tools">&nbsp; QRisk</h1>
           </md-toolbar>
-          <!-- side nav title --> 
-          <!-- side nav menu --> 
+          <!-- side nav title -->
+          <!-- side nav menu -->
           <md-content layout-margin>
              <ul>
                  <li ng-repeat="menu in menus">
                     <a href="{{menu.url}}">
-                       <md-button ng-click="toggleLeft()" class="md-accent">
+                       <md-button ng-click="toggleLeft()" class="md-accent principal-menu">
                            <i class="glyphicon glyphicon-{{menu.icone}}"></i>&nbsp; {{menu.nome}}
                        </md-button>
                     </a>
                  </li>
              </ul>
          </md-content>
-         <!-- side nav menu --> 
+         <!-- side nav menu -->
          <!-- local messages -->
          <div class="col-xs-12 col-sm-12 col-md-12" >
             <ui-alert title="Mensagem" type="warning" message="'O perfil do seu usuário não possui menus cadastrados.'"
