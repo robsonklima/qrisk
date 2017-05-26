@@ -213,7 +213,7 @@ switch ($acao) {
         $result = array(
             "chart" => array(
                 "caption" => "Risks by project",
-                "subcaption" => "Amount of risks bu projects",
+                "subcaption" => "Amount of risks by projects",
                 "startingangle" => "120",
                 "showlabels" => "0",
                 "showlegend" => "1",
