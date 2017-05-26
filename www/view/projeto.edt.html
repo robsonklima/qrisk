@@ -59,7 +59,7 @@
                         <!-- escopo -->
                         <!-- riscos lista -->
                         <div class="form-group">
-                            <label class="form-label">Selecione os Riscos</label>
+                            <label class="form-label">Select risks</label>
                             <div class="well">
                                 <!-- scrollable -->
                                 <div class="scrollable">
@@ -78,7 +78,7 @@
                             <label class="form-label">Status</label>
                             <select class="form-control" ng-model="projeto.id_status" ng-required="true" name="id_status"
                                     ng-options="status.id as status.nome for status in statuss | orderBy:'nome'">
-                                <option value="">Select the status</option>
+                                <option value="">Select status</option>
                             </select>
                             <!-- form group validation -->
                             <div ng-show="form.id_status.$dirty" ng-messages="form.id_status.$error">

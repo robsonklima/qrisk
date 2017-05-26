@@ -9,9 +9,9 @@
               <div class="pull-right">
                   <a href="#/dashboard" class="btn btn-default btn-circle">
                       <i class="glyphicon glyphicon-arrow-left"></i>
-                  </a>  
+                  </a>
               </div>
-          </div> 
+          </div>
        </div>
        <!-- title -->
     </div>
@@ -20,23 +20,23 @@
        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
            <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
            <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
-           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert> 
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert>
        </div>
     </div>
-    <!-- messages --> 
+    <!-- messages -->
     <!-- row -->
     <div class="row">
         <!-- col -->
-        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2"> 
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
             <!-- panel -->
             <div class="panel panel-primary" ng-show="projetos">
                 <!-- panel head -->
                 <div class="panel-heading">
-                    Projetos <small>usuário: {{nomeUsuario}}</small>
+                    Projects <small>user: {{nomeUsuario}}</small>
                 </div>
                 <!-- panel head -->
                 <!-- panel body -->
-                <div class="panel-body panel-responsive"> 
+                <div class="panel-body panel-responsive">
                     <!-- table div: analise qualitativa do risco -->
                     <div class="table-responsive">
                         <!-- table -->
@@ -44,21 +44,21 @@
                             <thead>
                                 <tr>
                                     <th><small>#</small></th>
-                                    <th><small>Projeto</small></th>
-                                    <th><small>Riscos</small></th>
+                                    <th><small>Project</small></th>
+                                    <th><small>Risks</small></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="projeto in projetos">
                                     <td><small>{{::projeto.id}}</small></td>
                                     <td><small>{{::projeto.nome}}</small></td>
-                                    <td> 
+                                    <td>
                                         <table class="table table-bordered" ng-show="projeto.riscos">
                                             <thead>
                                                 <tr>
                                                     <th class="align-center"><small>#</small></th>
-                                                    <th><small>Risco</small></th>
-                                                    <th class="align-center"><small>Ações</small></th>
+                                                    <th><small>Risk</small></th>
+                                                    <th class="align-center"><small>Actions</small></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -69,18 +69,18 @@
                                                         <button type="button" class="btn btn-outline btn-primary btn-xs"
                                                                 ng-click="marcarRiscoProjetoProblema(risco.id, projeto.id, 1)"
                                                                 ng-if="risco.is_problema!=1">
-                                                            Marcar problema
+                                                            Mark as problem
                                                         </button>
                                                         <button type="button" class="btn btn-outline btn-default btn-xs"
                                                                 ng-click="marcarRiscoProjetoProblema(risco.id, projeto.id, 0)"
                                                                 ng-if="risco.is_problema==1">
-                                                            Desmarcar problema
+                                                            Unmark as problem
                                                         </button>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <small ng-show="!projeto.riscos">Nenhum risco.</small>
+                                        <small ng-show="!projeto.riscos">No risks.</small>
                                     </td>
                                     <!--<td>
                                         <button type="button" class="btn btn-outline btn-primary btn-xs">
@@ -101,11 +101,11 @@
             <div class="panel panel-primary" ng-show="demandas">
                 <!-- panel head -->
                 <div class="panel-heading">
-                    Atividades <small>usuário: {{nomeUsuario}}</small>
+                    Activities <small>user: {{nomeUsuario}}</small>
                 </div>
                 <!-- panel head -->
                 <!-- panel body -->
-                <div class="panel-body panel-responsive"> 
+                <div class="panel-body panel-responsive">
                     <!-- table div: analise qualitativa do risco -->
                     <div class="table-responsive">
                         <!-- table -->
@@ -113,10 +113,10 @@
                             <thead>
                                 <tr>
                                     <th class="align-center"><small>#</small></th>
-                                    <th><small>Atividade</small></th>
-                                    <th><small>Projeto</small></th>
-                                    <th><small>Entrega</small></th>
-                                    <th><small>Riscos</small></th>
+                                    <th><small>Activity</small></th>
+                                    <th><small>Project</small></th>
+                                    <th><small>Delivery</small></th>
+                                    <th><small>Risks</small></th>
                                     <!--<th><small>Ações</small></th>-->
                                 </tr>
                             </thead>
@@ -126,13 +126,13 @@
                                     <td><small>{{::demanda.titulo | ellipsis:20}}</small></td>
                                     <td><small>{{::demanda.projeto_nome | ellipsis:20}}</small></td>
                                     <td><small>{{::demanda.data_entrega}}</small></td>
-                                    <td> 
+                                    <td>
                                         <table class="table table-bordered" ng-show="demanda.riscos">
                                             <thead>
                                                 <tr>
                                                     <th><small>#</small></th>
-                                                    <th><small>Risco</small></th>
-                                                    <th class="align-center"><small>Ações</small></th>
+                                                    <th><small>Risk</small></th>
+                                                    <th class="align-center"><small>Actions</small></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -143,18 +143,18 @@
                                                         <button type="button" class="btn btn-outline btn-primary btn-xs"
                                                                 ng-click="marcarRiscoDemandaProblema(risco.id, demanda.id, 1)"
                                                                 ng-if="risco.is_problema!=1">
-                                                            Marcar problema
+                                                            Mark as problem
                                                         </button>
                                                         <button type="button" class="btn btn-outline btn-default btn-xs"
                                                                 ng-click="marcarRiscoDemandaProblema(risco.id, demanda.id, 0)"
                                                                 ng-if="risco.is_problema==1">
-                                                            Desmarcar problema
+                                                            Unmark as problem
                                                         </button>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <small ng-show="!demanda.riscos">Nenhum risco.</small>
+                                        <small ng-show="!demanda.riscos">No risks.</small>
                                     </td>
                                     <!--<td>
                                         <button type="button" class="btn btn-outline btn-primary btn-xs">
@@ -174,9 +174,9 @@
         </div>
         <!-- col -->
         <!-- local messages -->
-        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2"> 
-            <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert> 
-            <ui-alert title="Mensagem" type="warning" message="'Você não possui nenhuma demanda ou não há riscos cadastrados para seus projetos.'" 
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+            <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert>
+            <ui-alert title="Mensagem" type="warning" message="'You have no demand or there are no registered risks for your projects.'"
                       ng-show="!demandas"></ui-alert>
         </div>
         <!-- local messages -->

@@ -30,45 +30,45 @@
                 <div class="panel-body">
                     <form name="form">
                         <div class="form-group">
-                            <label class="form-label">Título</label>
+                            <label class="form-label">Title</label>
                             <input ng-model="risco.titulo" class="form-control" type="text" name="titulo"
                                    ng-required="true" ng-minlength="5"/>
                             <!-- form group validation -->
                             <div ng-show="form.titulo.$dirty" ng-messages="form.titulo.$error">
-                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo título!</p>
-                                <p class="help-block-error" ng-message="minlength">O campo título deve ter no mínimo 5 caracteres.</p>
+                              <p class="help-block-error" ng-message="required">Please, type the title!</p>
+                              <p class="help-block-error" ng-message="minlength">The title field must be have at least 5 characters long.</p>
                             </div>
                             <!-- form group validation -->
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Causa</label>
+                            <label class="form-label">Cause</label>
                             <textarea ng-model="risco.causa" class="form-control" rows="2"></textarea>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Efeito</label>
+                            <label class="form-label">Effect</label>
                             <textarea ng-model="risco.efeito" class="form-control" rows="2"></textarea>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Tipo</label>
+                            <label class="form-label">Risk type</label>
                             <select class="form-control" ng-model="risco.id_risco_tipo" ng-required="true" name="id_risco_tipo"
                                     ng-options="tipo.id as tipo.nome for tipo in tipos | orderBy:'nome'">
-                                <option value="">Selecione o Tipo</option>
+                                <option value="">Select risk type</option>
                             </select>
                             <!-- form group validation -->
                             <div ng-show="form.id_risco_tipo.$dirty" ng-messages="form.id_risco_tipo.$error">
-                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo tipo!</p>
+                                <p class="help-block-error" ng-message="required">Please, type risk type!</p>
                             </div>
                             <!-- form group validation -->
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Categoria EAR</label>
+                            <label class="form-label">EAR category</label>
                             <select class="form-control" ng-model="risco.id_ear_categoria" ng-required="true" name="id_ear_categoria"
                                     ng-options="earCategoria.id as earCategoria.nome for earCategoria in earCategorias | orderBy:'nome'">
-                                <option value="">Selecione a Categoria EAR</option>
+                                <option value="">Select EAR category</option>
                             </select>
                             <!-- form group validation -->
                             <div ng-show="form.id_ear_categoria.$dirty" ng-messages="form.id_ear_categoria.$error">
-                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo categoria EAR!</p>
+                                <p class="help-block-error" ng-message="required">Please, type EAR category!</p>
                             </div>
                             <!-- form group validation -->
                         </div>

@@ -45,11 +45,11 @@
                             <label class="form-label">Função/Cargo</label>
                             <select class="form-control" ng-model="recurso.id_recurso_funcao" ng-required="true"
                                     ng-options="recursoFuncao.id as recursoFuncao.nome for recursoFuncao in recursosFuncoes | orderBy:'nome'" name="id_recurso_funcao">
-                                <option value="">Selecione a Função</option>
+                                <option value="">Select function</option>
                             </select>
                             <!-- form group validation -->
                             <div ng-show="form.id_recurso_funcao.$dirty" ng-messages="form.id_recurso_funcao.$error">
-                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo cargo!</p>
+                                <p class="help-block-error" ng-message="required">Please, type function!</p>
                             </div>
                             <!-- form group validation -->
                         </div>
@@ -58,11 +58,11 @@
                             <label class="form-label">Usuário</label>
                             <select class="form-control" ng-model="recurso.id_usuario" ng-required="true"
                                     ng-options="usuario.id as usuario.nome for usuario in usuarios | orderBy:'nome'" name="id_usuario">
-                                <option value="">Selecione o Usuário</option>
+                                <option value="">Select user</option>
                             </select>
                             <!-- form group validation -->
                             <div ng-show="form.id_usuario.$dirty" ng-messages="form.id_usuario.$error">
-                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo usuário!</p>
+                                <p class="help-block-error" ng-message="required">Please, type user!</p>
                             </div>
                             <!-- form group validation -->
                         </div>

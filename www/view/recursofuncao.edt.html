@@ -41,16 +41,16 @@
                             <!-- form group validation -->
                         </div>
 
-                        <label class="form-label">Valor Hora</label>
+                        <label class="form-label">Time value</label>
                         <div class="form-group input-group">
 
-                            <span class="input-group-addon">R$</span>
+                            <span class="input-group-addon">$</span>
                             <input ng-model="recursofuncao.valor_hora" class="form-control" type="text" name="valor_hora"
                                 ng-required="true" ng-minlength="2"/>
                             <span class="input-group-addon">.00</span>
                             <!-- form group validation -->
                             <div ng-show="form.valor_hora.$dirty" ng-messages="form.valor_hora.$error">
-                                <p class="help-block-error" ng-message="required">&nbsp; Por favor, preencha o campo valor hora!</p>
+                                <p class="help-block-error" ng-message="required">&nbsp; Please, type time value!</p>
                             </div>
                             <!-- form group validation -->
                         </div>

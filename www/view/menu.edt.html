@@ -41,11 +41,11 @@
                             <!-- form group validation -->
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Icone</label>
+                            <label class="form-label">Icon</label>
                             <input ng-model="menu.icone" class="form-control" type="text" name="icone"/>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Ordem</label>
+                            <label class="form-label">Order</label>
                             <input ng-model="menu.ordem" class="form-control" type="text" name="icone" />
                         </div>
                         <div class="form-group">
@@ -54,8 +54,8 @@
                                    ng-required="true" ng-minlength="5"/>
                             <!-- form group validation -->
                             <div ng-show="form.url.$dirty" ng-messages="form.url.$error">
-                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo url!</p>
-                                <p class="help-block-error" ng-message="minlength">O campo url deve ter no mínimo 5 caracteres.</p>
+                                <p class="help-block-error" ng-message="required">Please, type url!</p>
+                                <p class="help-block-error" ng-message="minlength">The url field must be at least 5 characters long.</p>
                             </div>
                             <!-- form group validation -->
                         </div>

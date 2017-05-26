@@ -8,9 +8,9 @@
               <div class="pull-right">
                   <a href="#/projeto.get" class="btn btn-default btn-circle">
                       <i class="glyphicon glyphicon-arrow-left"></i>
-                  </a>  
+                  </a>
               </div>
-          </div> 
+          </div>
       </div>
     </div>
     <!-- title -->
@@ -19,10 +19,10 @@
        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
            <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
            <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
-           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert> 
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert>
        </div>
     </div>
-    <!-- messages --> 
+    <!-- messages -->
     <!-- row -->
     <div class="row">
         <!-- col -->
@@ -31,16 +31,16 @@
             <div class="panel panel-default">
                 <!-- panel head -->
                 <div class="panel-heading">
-                    Cadastro
+                    Add
                 </div>
                 <!-- panel head -->
                 <!-- panel body -->
                 <div class="panel-body">
                     <!-- form -->
                     <form name="form">
-                        <div class="form-group">                
+                        <div class="form-group">
                             <label class="form-label">Name</label>
-                            <input ng-model="projeto.nome" class="form-control" type="text" name="nome" 
+                            <input ng-model="projeto.nome" class="form-control" type="text" name="nome"
                                    ng-required="true" ng-minlength="5"/>
                             <!-- form group validation -->
                             <div ng-show="form.nome.$dirty" ng-messages="form.nome.$error">
@@ -50,12 +50,12 @@
                             <!-- form group validation -->
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Escopo</label>
+                            <label class="form-label">Scope</label>
                             <textarea ng-model="projeto.escopo" class="form-control" rows="3"></textarea>
                         </div>
                         <!-- riscos lista -->
                         <div class="form-group">
-                            <label class="form-label">Selecione os Riscos</label>
+                            <label class="form-label">Select risks</label>
                             <div class="well">
                                 <!-- scrollable -->
                                 <div class="scrollable">
@@ -73,7 +73,7 @@
                             <label class="form-label">Status</label>
                             <select class="form-control" ng-model="projeto.id_status" ng-required="true" name="id_status"
                                     ng-options="status.id as status.nome for status in statuss | orderBy:'nome'">
-                                <option value="">Select the status</option>
+                                <option value="">Select status</option>
                             </select>
                             <!-- form group validation -->
                             <div ng-show="form.id_status.$dirty" ng-messages="form.id_status.$error">
@@ -86,15 +86,15 @@
                     <!-- form messages -->
                     <div ng-show="form.nome.$dirty" ng-messages="form.nome.$error">
                         <div ng-message="required" class="alert alert-danger">
-                            Por favor, preencha o campo nome!
+                            Please, type the name
                         </div>
                         <div ng-message="minlength" class="alert alert-danger">
-                            O campo nome deve ter no mínimo 5 caracteres.
+                            The name field must be heave at least 5 characters long.
                         </div>
                     </div>
                     <!-- form messages -->
                     <!-- buttons -->
-                    <button class="btn btn-primary btn-block" ng-click="addItem(projeto)" 
+                    <button class="btn btn-primary btn-block" ng-click="addItem(projeto)"
                         ng-disabled="form.$invalid">Save</button>
                     <!-- buttons -->
                 </div>

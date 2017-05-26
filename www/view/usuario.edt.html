@@ -41,36 +41,36 @@
                             <!-- form group validation -->
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Usuário</label>
+                            <label class="form-label">User</label>
                             <input ng-model="usuario.login" class="form-control" type="text" name="login"
                                    ng-required="true" ng-minlength="6" placeholder="Login"/>
                             <!-- form group validation -->
                             <div ng-show="form.login.$dirty" ng-messages="form.login.$error">
-                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo login!</p>
-                                <p class="help-block-error" ng-message="minlength">O campo login deve ter no mínimo 5 caracteres.</p>
+                                <p class="help-block-error" ng-message="required">Please, type login!</p>
+                                <p class="help-block-error" ng-message="minlength">The login field must be have at least 5 characters long</p>
                             </div>
                             <!-- form group validation -->
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Senha</label>
+                            <label class="form-label">Password</label>
                             <input ng-model="usuario.senha" class="form-control" type="password" name="senha"
                                    ng-required="true" ng-minlength="6" placeholder="Senha"/>
                             <!-- form group validation -->
                             <div ng-show="form.senha.$dirty" ng-messages="form.senha.$error">
-                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo senha!</p>
-                                <p class="help-block-error" ng-message="minlength">O campo senha deve ter no mínimo 6 caracteres.</p>
+                                <p class="help-block-error" ng-message="required">Please, type password!</p>
+                                <p class="help-block-error" ng-message="minlength">The password field must be have at least 6 characters long</p>
                             </div>
                             <!-- form group validation -->
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Perfil</label>
+                            <label class="form-label">User profile</label>
                             <select class="form-control" ng-model="usuario.id_usuario_perfil" ng-required="true"
                                     ng-options="usuarioPerfil.id as usuarioPerfil.nome for usuarioPerfil in usuariosPerfis | orderBy:'nome'" name="id_usuario_perfil">
-                                <option value="">Selecione o Perfil</option>
+                                <option value="">Select user profile</option>
                             </select>
                             <!-- form group validation -->
                             <div ng-show="form.id_usuario_perfil.$dirty" ng-messages="form.id_usuario_perfil.$error">
-                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo perfil!</p>
+                                <p class="help-block-error" ng-message="required">Please, select user profile!</p>
                             </div>
                             <!-- form group validation -->
                         </div>

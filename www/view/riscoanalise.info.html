@@ -9,9 +9,9 @@
               <div class="pull-right">
                   <a href="#/dashboard" class="btn btn-default btn-circle">
                       <i class="glyphicon glyphicon-arrow-left"></i>
-                  </a>  
+                  </a>
               </div>
-          </div> 
+          </div>
        </div>
        <!-- title -->
     </div>
@@ -20,38 +20,38 @@
        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
            <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
            <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
-           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert> 
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert>
        </div>
     </div>
-    <!-- messages --> 
+    <!-- messages -->
     <!-- row -->
     <div class="row">
         <!-- col -->
-        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2" ng-show="risco_analise_detalhada"> 
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2" ng-show="risco_analise_detalhada">
             <!-- panel -->
             <div class="panel panel-primary">
                 <!-- panel head -->
                 <div class="panel-heading">
-                    Análises Realizadas <small>usuário: {{nomeUsuario}}</small>
+                    Actions realized <small>user: {{nomeUsuario}}</small>
                 </div>
                 <!-- panel head -->
                 <!-- panel body -->
-                <div class="panel-body panel-responsive"> 
+                <div class="panel-body panel-responsive">
                     <!-- table div: analise qualitativa do risco -->
                     <div class="table-responsive">
                         <!-- table -->
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th><small>Risco</small></th>
-                                    <th><small>Projeto</small></th>
-                                    <th class="align-center"><small>Custo</small></th>
-                                    <th class="align-center"><small>Cronogr.</small></th>
-                                    <th class="align-center"><small>Escopo</small></th>
-                                    <th class="align-center"><small>Qualidade</small></th>
-                                    <th class="align-center"><small>Probab.</small></th>
-                                    <th class="align-center"><small>Data</small></th>
-                                    <th class="align-center"><small>Ações</small></th>
+                                    <th><small>Risk</small></th>
+                                    <th><small>Project</small></th>
+                                    <th class="align-center"><small>Cost</small></th>
+                                    <th class="align-center"><small>Schedule</small></th>
+                                    <th class="align-center"><small>Scope</small></th>
+                                    <th class="align-center"><small>Quality</small></th>
+                                    <th class="align-center"><small>Probability</small></th>
+                                    <th class="align-center"><small>Date</small></th>
+                                    <th class="align-center"><small>Actions</small></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,7 +66,7 @@
                                     <td class="align-center"><small>{{::analise_detalhada.data_cadastro}}</small></td>
                                     <td class="align-center td-button">
                                         <a class="action-btn" href="" ng-click="delItem(analise_detalhada)">
-                                            <i class="glyphicon glyphicon-trash small-icon" title="Excluir"></i>
+                                            <i class="glyphicon glyphicon-trash small-icon" title="Delete"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -82,9 +82,9 @@
         </div>
         <!-- col -->
         <!-- local messages -->
-        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2"> 
-            <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert> 
-            <ui-alert title="Mensagem" type="warning" message="'Você ainda não analisou nenhum risco.'" 
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+            <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert>
+            <ui-alert title="Mensagem" type="warning" message="'You have not yet evaluated at any risk.'"
                       ng-show="!risco_analise_detalhada"></ui-alert>
         </div>
         <!-- local messages -->

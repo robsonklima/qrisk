@@ -1,5 +1,5 @@
 angular.module("qrisk").controller("problemaAddCtrl", function ($scope, $routeParams, $rootScope, $route, $mdDialog, $mdToast, riscosAPI, projetosAPI, demandasAPI, riscosProjetoAPI, riscosDemandaAPI) {
-    $scope.pageTitle = "Report problem";
+    $scope.pageTitle = "Report a problem";
     $scope.nomeUsuario = $rootScope.globals.currentUser.nome;
 
     var buscarProjetosPorIdUsuario = function() {

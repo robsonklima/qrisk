@@ -7,9 +7,9 @@
               <div class="pull-right">
                   <a href="#/riscoanalise.get" class="btn btn-default btn-circle">
                       <i class="glyphicon glyphicon-arrow-left"></i>
-                  </a>  
+                  </a>
               </div>
-          </div> 
+          </div>
       </div>
     </div>
     <!-- title -->
@@ -18,7 +18,7 @@
        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
            <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
            <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
-           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert> 
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert>
        </div>
     </div>
     <!-- messages -->
@@ -35,7 +35,7 @@
             <div class="panel panel-primary">
                 <!-- panel head -->
                 <div class="panel-heading">
-                    Detalhes do Risco
+                    Risk details
                 </div>
                 <!-- panel head -->
                 <!-- panel body -->
@@ -46,19 +46,19 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <td class="first-line">Título</td>
+                                    <td class="first-line">Title</td>
                                     <td class="first-line">{{risco.titulo}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Projeto</td>
+                                    <td>Project</td>
                                     <td>{{risco.projeto_nome}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Causa</td>
+                                    <td>Cause</td>
                                     <td>{{risco.causa}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Efeito</td>
+                                    <td>Effect</td>
                                     <td>{{risco.efeito}}</td>
                                 </tr>
                             </tbody>
@@ -74,7 +74,7 @@
             <div class="panel panel-primary bottom-padding-12">
                 <!-- panel head -->
                 <div class="panel-heading">
-                    Análise do Risco
+                    Risk review
                 </div>
                 <!-- panel head -->
                 <!-- panel body -->
@@ -83,29 +83,29 @@
                     <form name="form">
                         <!-- hidden inputs -->
                         <div class="form-group" ng-show="false">
-                            <label class="form-label">Id do Usuário</label>
-                            <input ng-model="riscoanalise.id_usuario" class="form-control" 
+                            <label class="form-label">User id</label>
+                            <input ng-model="riscoanalise.id_usuario" class="form-control"
                                 type="text" name="id_usuario"/>
                         </div>
                         <div class="form-group" ng-show="false">
-                            <label class="form-label">Id do Risco</label>
-                            <input ng-model="riscoanalise.id_risco" class="form-control" 
+                            <label class="form-label">Risk id</label>
+                            <input ng-model="riscoanalise.id_risco" class="form-control"
                                 type="text" name="id_risco"/>
                         </div>
                         <div class="form-group" ng-show="false">
-                            <label class="form-label">Id do Projeto</label>
-                            <input ng-model="riscoanalise.id_projeto" class="form-control" 
+                            <label class="form-label">Project id</label>
+                            <input ng-model="riscoanalise.id_projeto" class="form-control"
                                 type="text" name="id_projeto"/>
                         </div>
                         <!-- hidden inputs -->
                         <!-- custo -->
                         <div class="form-group">
                             <!-- label -->
-                            <label class="form-label label-md">Custo</label>
+                            <label class="form-label label-md">Cost</label>
                             <!-- label -->
                             <!-- radio -->
                             <md-radio-group ng-model="riscoanalise.custo" ng-required="true">
-                                <md-radio-button ng-repeat="tipoCusto in tiposCustos" 
+                                <md-radio-button ng-repeat="tipoCusto in tiposCustos"
                                     value="{{tipoCusto.peso}}">
                                     {{tipoCusto.descricao}}
                                 </md-radio-button>
@@ -123,7 +123,7 @@
                             <!-- label -->
                             <!-- radio -->
                             <md-radio-group ng-model="riscoanalise.cronograma" ng-required="true">
-                                <md-radio-button ng-repeat="tipoCronograma in tiposCronogramas" 
+                                <md-radio-button ng-repeat="tipoCronograma in tiposCronogramas"
                                     value="{{tipoCronograma.peso}}">
                                     {{tipoCronograma.descricao}}
                                 </md-radio-button>
@@ -137,11 +137,11 @@
                         <!-- escopo -->
                         <div class="form-group">
                             <!-- label -->
-                            <label class="form-label label-md">Escopo</label>
+                            <label class="form-label label-md">Scope</label>
                             <!-- label -->
                             <!-- radio -->
                             <md-radio-group ng-model="riscoanalise.escopo" ng-required="true">
-                                <md-radio-button ng-repeat="tipoEscopo in tiposEscopos" 
+                                <md-radio-button ng-repeat="tipoEscopo in tiposEscopos"
                                     value="{{tipoEscopo.peso}}">
                                     {{tipoEscopo.descricao}}
                                 </md-radio-button>
@@ -155,11 +155,11 @@
                         <!-- qualidade -->
                         <div class="form-group">
                             <!-- label -->
-                            <label class="form-label label-md">Qualidade</label>
-                            <!-- label --> 
+                            <label class="form-label label-md">Quality</label>
+                            <!-- label -->
                             <!-- radio -->
                             <md-radio-group ng-model="riscoanalise.qualidade" ng-required="true">
-                                <md-radio-button ng-repeat="tipoQualidade in tiposQualidades" 
+                                <md-radio-button ng-repeat="tipoQualidade in tiposQualidades"
                                     value="{{tipoQualidade.peso}}">
                                     {{tipoQualidade.descricao}}
                                 </md-radio-button>
@@ -173,11 +173,11 @@
                         <!-- probabilidade -->
                         <div class="form-group">
                             <!-- label -->
-                            <label class="form-label label-md">Probabilidade</label>
+                            <label class="form-label label-md">Probability</label>
                             <!-- label -->
                             <!-- radio -->
                             <md-radio-group ng-model="riscoanalise.probabilidade" ng-required="true">
-                                <md-radio-button ng-repeat="tipoProbabilidade in tiposProbabilidades" 
+                                <md-radio-button ng-repeat="tipoProbabilidade in tiposProbabilidades"
                                     value="{{tipoProbabilidade.peso}}">
                                     {{tipoProbabilidade.descricao}}
                                 </md-radio-button>
@@ -189,7 +189,7 @@
                         <br />
                         <!-- br -->
                         <!-- buttons -->
-                        <button class="btn btn-primary btn-block" ng-click="addItem(riscoanalise)" 
+                        <button class="btn btn-primary btn-block" ng-click="addItem(riscoanalise)"
                             ng-disabled="form.$invalid">Save</button>
                         <!-- buttons -->
                     </form>

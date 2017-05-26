@@ -14,7 +14,7 @@ angular.module("qrisk").controller("riscoInfoCtrl", function ($scope, $routePara
     };
 
     $scope.delItem = function (item) {
-        var confirm = $mdDialog.confirm().textContent('Are you sure to delete this this analysis?')
+        var confirm = $mdDialog.confirm().textContent('Are you sure to delete this this review?')
             .ok('Sim').clickOutsideToClose(true).cancel('Cancel');
 
         $mdDialog.show(confirm).then(function() {

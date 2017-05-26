@@ -1,5 +1,5 @@
 <div id="page-wrapper">
-    
+
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 page-title-div">
           <div class="well">
@@ -7,9 +7,9 @@
               <div class="pull-right">
                   <a href="#/recurso.get" class="btn btn-default btn-circle">
                       <i class="glyphicon glyphicon-arrow-left"></i>
-                  </a>  
+                  </a>
               </div>
-          </div> 
+          </div>
       </div>
     </div>
     <!-- messages -->
@@ -17,21 +17,21 @@
        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
            <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
            <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
-           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert> 
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert>
        </div>
     </div>
-    <!-- messages --> 
+    <!-- messages -->
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Cadastro
+                    Add
                 </div>
                 <div class="panel-body">
                     <form name="form">
-                        <div class="form-group">                
+                        <div class="form-group">
                             <label class="form-label">Name</label>
-                            <input ng-model="recurso.nome" class="form-control" type="text" name="nome" 
+                            <input ng-model="recurso.nome" class="form-control" type="text" name="nome"
                                    ng-required="true" ng-minlength="5"/>
                             <!-- form group validation -->
                             <div ng-show="form.nome.$dirty" ng-messages="form.nome.$error">
@@ -42,27 +42,27 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Função/Cargo</label>
+                            <label class="form-label">Function</label>
                             <select class="form-control" ng-model="recurso.id_recurso_funcao" ng-required="true"
                                     ng-options="recursoFuncao.id as recursoFuncao.nome for recursoFuncao in recursosFuncoes | orderBy:'nome'" name="id_recurso_funcao">
-                                <option value="">Selecione a Função</option>
+                                <option value="">Select the function</option>
                             </select>
                             <!-- form group validation -->
                             <div ng-show="form.id_recurso_funcao.$dirty" ng-messages="form.id_recurso_funcao.$error">
-                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo cargo!</p>
+                                <p class="help-block-error" ng-message="required">Please, type function!</p>
                             </div>
                             <!-- form group validation -->
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">Usuário</label>
+                            <label class="form-label">User</label>
                             <select class="form-control" ng-model="recurso.id_usuario" ng-required="true"
                                     ng-options="usuario.id as usuario.nome for usuario in usuarios | orderBy:'nome'" name="id_usuario">
-                                <option value="">Selecione o Usuário</option>
+                                <option value="">Select user</option>
                             </select>
                             <!-- form group validation -->
                             <div ng-show="form.id_usuario.$dirty" ng-messages="form.id_usuario.$error">
-                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo usuário!</p>
+                                <p class="help-block-error" ng-message="required">Please, type user!</p>
                             </div>
                             <!-- form group validation -->
                         </div>
@@ -71,17 +71,17 @@
                             <label class="form-label">Status</label>
                             <select class="form-control" ng-model="recurso.id_status" ng-required="true" name="id_status"
                                     ng-options="status.id as status.nome for status in statuss | orderBy:'nome'">
-                                <option value="">Select the status</option>
+                                <option value="">Select status</option>
                             </select>
                             <!-- form group validation -->
                             <div ng-show="form.id_status.$dirty" ng-messages="form.id_status.$error">
-                                <p class="help-block-error" ng-message="required">Please, type the status!</p>
+                                <p class="help-block-error" ng-message="required">Please, type status!</p>
                             </div>
                             <!-- form group validation -->
                         </div>
                     </form>
                     <!-- buttons -->
-                    <button class="btn btn-primary btn-block" ng-click="addItem(recurso)" 
+                    <button class="btn btn-primary btn-block" ng-click="addItem(recurso)"
                         ng-disabled="form.$invalid">Save</button>
                     <!-- buttons -->
                 </div>
