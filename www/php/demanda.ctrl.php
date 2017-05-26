@@ -2,14 +2,14 @@
 
 require_once('initialize.php');
 
-if(isset($_REQUEST["acao"])){ $acao = $_REQUEST["acao"]; } 
+if(isset($_REQUEST["acao"])){ $acao = $_REQUEST["acao"]; }
 
 switch ($acao) {
-        
+
     case "adicionar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
-        
+
         $demanda = new Demanda();
         $demanda->setTitulo($postdata->titulo);
         $demanda->setDetalhes($postdata->detalhes);
@@ -20,31 +20,31 @@ switch ($acao) {
         $demanda->setIdRecurso($postdata->id_recurso);
         $demanda->setIdUsuario($postdata->id_usuario);
         $demanda->setIdStatus($postdata->id_status);
-        
+
         if($demanda->adicionar()) {
             $riscos = array();
             $riscos = $postdata->riscos;
-            
+
             if (sizeof($riscos)>0) {
                 $c = 0;
-                foreach($riscos as $risco):  
+                foreach($riscos as $risco):
                     $riscoDemanda = new RiscoDemanda();
                     $riscoDemanda->setIdRisco($risco);
                     $riscoDemanda->setIdDemanda($demanda->getId());
-                    $riscoDemanda->adicionar();    
+                    $riscoDemanda->adicionar();
                     $c++;
-                endforeach;     
+                endforeach;
             }
-            
-            echo "Projeto inserido com sucesso!"; 
-        } else { 
-            /* Failure */ 
+
+            echo "Project added successfully!";
+        } else {
+            /* Failure */
         }
 
-        break;  
-        
+        break;
+
     case "buscar_todos":
-        
+
         $array = Demanda::buscar_todos();
         $c = 0;
         foreach($array as $item):
@@ -67,24 +67,24 @@ switch ($acao) {
 
         $json = json_encode($result);
         if ($c > 0) echo $json;
-        
+
         break;
-        
+
     case "buscar_por_id":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
-        
+
         // riscos da demanda
         $id_demanda = (int)$postdata->id;
         $riscos = RiscoDemanda::buscar_todos_por_id_demanda($id_demanda);
         $c = 0;
-        foreach($riscos as $risco):    
-            $riscosDemanda[$c] = 
+        foreach($riscos as $risco):
+            $riscosDemanda[$c] =
                 $risco->getIdRisco()
             ;
             $c++;
         endforeach;
-        
+
         // demanda
         $item = Demanda::buscar_por_id($postdata->id);
         $result = array(
@@ -103,33 +103,33 @@ switch ($acao) {
 
         $json = json_encode($result);
         echo $json;
-        
+
         break;
-        
+
     case "buscar_por_id_usuario":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $array = Demanda::buscar_por_id_usuario($postdata->id_usuario);
-        
+
         $c = 0;
         foreach($array as $item):
-        
+
             // riscos da demanda
             $riscos = RiscoDemanda::buscar_todos_por_id_demanda($item->getId());
             $c1 = 0;
-        
-            foreach($riscos as $risco):    
+
+            foreach($riscos as $risco):
                 $riscosDemanda[$c1] = array(
                     'id' => $risco->getIdRisco(),
                     'titulo' => $risco->getRiscoTitulo(),
                     'is_problema' => $risco->getIsProblema()
                 );
-        
+
                 //echo $risco->getIdRisco() . $risco->getRiscoTitulo();
-        
+
                 $c1++;
             endforeach;
-        
+
             // demanda
             $result[$c] = array(
               'id' => $item->getId(),
@@ -147,20 +147,20 @@ switch ($acao) {
               'riscos' => $riscosDemanda
             );
             $c++;
-        
+
             $riscosDemanda = null;
         endforeach;
 
         $json = json_encode($result);
         if ($c > 0) echo $json;
-        
+
         break;
-    
+
     case "atualizar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $demanda = Demanda::buscar_por_id($postdata->id);
-        
+
         $demanda->setTitulo($postdata->titulo);
         $demanda->setDetalhes($postdata->detalhes);
         $demanda->setDataInicio($postdata->data_inicio);
@@ -169,42 +169,40 @@ switch ($acao) {
         $demanda->setIdProjeto($postdata->id_projeto);
         $demanda->setIdRecurso($postdata->id_recurso);
         $demanda->setIdStatus($postdata->id_status);
-        
+
         RiscoDemanda::apagar($postdata->id);
-        
+
         $demanda->atualizar();
         $riscos = array();
         $riscos = $postdata->riscos;
 
         if (sizeof($riscos)>0) {
             $c = 0;
-            foreach($riscos as $risco):  
+            foreach($riscos as $risco):
                 $riscoDemanda = new RiscoDemanda();
                 $riscoDemanda->setIdRisco($risco);
                 $riscoDemanda->setIdDemanda($demanda->getId());
-                $riscoDemanda->adicionar();    
+                $riscoDemanda->adicionar();
                 $c++;
-            endforeach;     
+            endforeach;
         }
-            
-        echo "Demanda atualizada com sucesso!"; 
-        
+
+        echo "Activity updated successfully!";
+
         break;
-        
+
     case "apagar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id = (int)$postdata->recordId;
-        
+
         $object = Demanda::buscar_por_id($id);
 
-        if($object && $object->apagar()) { echo "Demanda deletada com sucesso!"; } else { /* Failure */ }
-        
+      if($object && $object->apagar()) { echo "Activity deleted successfully!"; } else { /* Failure */ }
+
         break;
-        
+
     default: "";
 }
 
 exit;
-
-  

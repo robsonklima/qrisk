@@ -2,12 +2,12 @@
 
 require_once('initialize.php');
 
-if(isset($_REQUEST["acao"])){ $acao = $_REQUEST["acao"]; } 
+if(isset($_REQUEST["acao"])){ $acao = $_REQUEST["acao"]; }
 
 switch ($acao) {
-        
+
     case "buscar_todos":
-        
+
         $array = Menu::buscar_todos();
         $c = 0;
         foreach($array as $item):
@@ -24,11 +24,11 @@ switch ($acao) {
 
         $json = json_encode($result);
         if ($c > 0) echo $json;
-        
+
         break;
-        
+
     case "buscar_por_id":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id       = (int)$postdata->id;
         $result = array();
@@ -46,11 +46,11 @@ switch ($acao) {
 
         $json = json_encode($result);
         echo $json;
-        
+
         break;
-        
+
     case "buscar_por_id_usuario_perfil":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $array = Menu::buscar_por_id_usuario_perfil($postdata->id_usuario_perfil);
         $c = 0;
@@ -68,13 +68,13 @@ switch ($acao) {
 
         $json = json_encode($result);
         if ($c > 0) echo $json;
-        
+
         break;
-    
+
     case "adicionar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
-        
+
         $object = new Menu();
         $object->setNome($postdata->nome);
         $object->setIcone($postdata->icone);
@@ -82,12 +82,12 @@ switch ($acao) {
         $object->setOrdem($postdata->ordem);
         $object->setIdStatus($postdata->id_status);
 
-        if($object->adicionar()) { echo "Menu adicionado com sucesso!"; } else { /* Failure */ }
+      if($object->adicionar()) { echo "Menu added successfully!"; } else { /* Failure */ }
 
-        break;    
-    
+        break;
+
     case "atualizar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id = $postdata->id;
 
@@ -98,25 +98,23 @@ switch ($acao) {
         $object->setOrdem($postdata->ordem);
         $object->setIdStatus($postdata->id_status);
 
-        if($object->atualizar()) { echo "Menu atualizado com sucesso!"; } else { echo "Nenhuma alteração realizada!"; }
-        
+        if($object->atualizar()) { echo "Menu updated successfully!"; } else { echo "Nothing changed!"; }
+
         break;
-        
+
     case "apagar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id = (int)$postdata->recordId;
-        
+
         $object = Menu::buscar_por_id($id);
 
-        if($object && $object->apagar()) { echo "Menu deletado com sucesso!"; } else { /* Failure */ }
-        
+      if($object && $object->apagar()) { echo "Menu deleted successfully!"; } else { /* Failure */ }
+
         break;
-        
-        
+
+
     default: "";
 }
 
 exit;
-
-  

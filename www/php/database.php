@@ -15,12 +15,12 @@ class MySQLDatabase
         $this->magic_quotes_active = get_magic_quotes_gpc();
         $this->real_escape_string_exists = function_exists("mysql_real_escape_string");
     }
-    
+
     public function open_connection()
     {
         // evitar impressao de erro de funcoes depreciadas
         error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
-        
+
         // caracteres charset.
         header('Content-Type: text/html; charset=utf-8');
 
@@ -29,13 +29,13 @@ class MySQLDatabase
             die("Database connection failed: " . mysql_error());
         } else {
             $db_select = mysql_select_db(DB_NAME, $this->connection);
-            
+
             // caracteres charset.
             mysql_query("SET NAMES 'utf8'");
             mysql_query('SET character_set_connection=utf8');
             mysql_query('SET character_set_client=utf8');
             mysql_query('SET character_set_results=utf8');
-            
+
             if (!$db_select) {
                 die("Database selection failed: " . mysql_error());
             }
@@ -55,7 +55,7 @@ class MySQLDatabase
         $this->last_query = $sql;
         $result = mysql_query($sql, $this->connection);
         $this->confirm_query($result);
-        
+
         return $result;
     }
 
@@ -107,7 +107,7 @@ class MySQLDatabase
             $output = str_replace("'", "`", $output);
             salva_log($output);
             //die($output);
-            die('Ocorreu um erro! Detalhes nos logs');
+            die('An error ocurred! More details in logs');
         }
     }
 

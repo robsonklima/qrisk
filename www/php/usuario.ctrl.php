@@ -2,12 +2,12 @@
 
 require_once('initialize.php');
 
-if(isset($_REQUEST["acao"])){ $acao = $_REQUEST["acao"]; } 
+if(isset($_REQUEST["acao"])){ $acao = $_REQUEST["acao"]; }
 
 switch ($acao) {
-        
+
     case "buscar_todos":
-        
+
         $array = Usuario::buscar_todos();
         $c = 0;
         foreach($array as $item):
@@ -24,13 +24,13 @@ switch ($acao) {
 
         $json = json_encode($result);
         if ($c > 0) echo $json;
-        
+
         break;
-        
+
     // Pesquisa usuários que nao estao vinculados a nenhum recurso
-    // para atribuir ao cadastro de recursos   
+    // para atribuir ao cadastro de recursos
     case "buscar_usu_sem_rec":
-        
+
         $array = Usuario::buscar_usu_sem_rec();
         $c = 0;
         foreach($array as $item):
@@ -42,15 +42,15 @@ switch ($acao) {
             );
             $c++;
         endforeach;
-        
+
         $json = json_encode($result);
-        
+
         if ($c > 0) echo $json;
-        
+
         break;
-        
+
     case "buscar_por_id":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id       = (int)$postdata->id;
         $result = array();
@@ -68,57 +68,55 @@ switch ($acao) {
 
         $json = json_encode($result);
         echo $json;
-        
+
         break;
-    
+
     case "adicionar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
-        
+
         $object = new Usuario();
-        
+
         $object->setNome($postdata->nome);
         $object->setLogin($postdata->login);
         $object->setSenha($postdata->senha);
         $object->setIdUsuarioPerfil($postdata->id_usuario_perfil);
         $object->setIdStatus($postdata->id_status);
-        
-        if($object->adicionar()) { echo "Usuário adicionado com sucesso!"; } else { /* Failure */ }
 
-        break;    
-    
+      if($object->adicionar()) { echo "User added successfully!"; } else { /* Failure */ }
+
+        break;
+
     case "atualizar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id       = $postdata->id;
-        
+
         $object = Usuario::buscar_por_id($id);
-        
+
         $object->setNome($postdata->nome);
         $object->setLogin($postdata->login);
         $object->setSenha($postdata->senha);
         $object->setIdUsuarioPerfil($postdata->id_usuario_perfil);
         $object->setIdStatus($postdata->id_status);
-        
 
-        if($object->atualizar()) { echo "Usuário atualizado com sucesso!"; } else { echo "Nenhuma alteração realizada!"; }
-        
+
+        if($object->atualizar()) { echo "User added successfully!"; } else { echo "Nothing changed!"; }
+
         break;
-        
+
     case "apagar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id = (int)$postdata->recordId;
-        
+
         $object = Usuario::buscar_por_id($id);
 
-        if($object && $object->apagar()) { echo "Usuário deletado com sucesso!"; } else { /* Failure */ }
-        
+      if($object && $object->apagar()) { echo "User deleted successfully!"; } else { /* Failure */ }
+
         break;
-        
+
     default: "";
 }
 
 exit;
-
-  

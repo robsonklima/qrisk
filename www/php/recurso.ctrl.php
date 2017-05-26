@@ -2,12 +2,12 @@
 
 require_once('initialize.php');
 
-if(isset($_REQUEST["acao"])){ $acao = $_REQUEST["acao"]; } 
+if(isset($_REQUEST["acao"])){ $acao = $_REQUEST["acao"]; }
 
 switch ($acao) {
-        
+
     case "buscar_todos":
-        
+
         $array = Recurso::buscar_todos();
         $c = 0;
         foreach($array as $item):
@@ -24,11 +24,11 @@ switch ($acao) {
 
         $json = json_encode($result);
         if ($c > 0) echo $json;
-        
+
         break;
-        
+
     case "buscar_por_id":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id = (int)$postdata->id;
         $result = array();
@@ -45,52 +45,50 @@ switch ($acao) {
 
         $json = json_encode($result);
         echo $json;
-        
+
         break;
-    
+
     case "adicionar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
-        
+
         $object = new Recurso();
         $object->setNome($postdata->nome);
         $object->setIdRecursoFuncao($postdata->id_recurso_funcao);
         $object->setIdUsuario($postdata->id_usuario);
         $object->setIdstatus($postdata->id_status);
 
-        if($object->adicionar()) { echo "Recurso adicionado com sucesso!"; } else { /* Failure */ }
+      if($object->adicionar()) { echo "Resource added successfully!"; } else { /* Failure */ }
 
-        break;    
-    
+        break;
+
     case "atualizar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
 
         $object = Recurso::buscar_por_id($postdata->id);
-        
+
         $object->setNome($postdata->nome);
         $object->setIdRecursoFuncao($postdata->id_recurso_funcao);
         $object->setIdUsuario($postdata->id_usuario);
         $object->setIdStatus($postdata->id_status);
 
-        if($object->atualizar()) { echo "Recurso atualizado com sucesso!"; } else { echo "Nenhuma alteração realizada!"; }
-        
+        if($object->atualizar()) { echo "Resource updated successfully!"; } else { echo "Nothing changed!"; }
+
         break;
-        
+
     case "apagar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id = (int)$postdata->recordId;
-        
+
         $object = Recurso::buscar_por_id($id);
 
-        if($object && $object->apagar()) { echo "Recurso deletado com sucesso!"; } else { /* Failure */ }
-        
+      if($object && $object->apagar()) { echo "Resource deleted successfully!"; } else { /* Failure */ }
+
         break;
-        
+
     default: "";
 }
 
 exit;
-
-  

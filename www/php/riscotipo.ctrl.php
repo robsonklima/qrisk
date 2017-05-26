@@ -2,12 +2,12 @@
 
 require_once('initialize.php');
 
-if(isset($_REQUEST["acao"])){ $acao = $_REQUEST["acao"]; } 
+if(isset($_REQUEST["acao"])){ $acao = $_REQUEST["acao"]; }
 
 switch ($acao) {
-        
+
     case "buscar_todos":
-        
+
         $array = RiscoTipo::buscar_todos();
         $c = 0;
         foreach($array as $item):
@@ -21,11 +21,11 @@ switch ($acao) {
 
         $json = json_encode($result);
         echo $json;
-        
+
         break;
-        
+
     case "buscar_por_id":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id       = (int)$postdata->id;
         $result = array();
@@ -40,47 +40,45 @@ switch ($acao) {
 
         $json = json_encode($result);
         echo $json;
-        
+
         break;
-    
+
     case "adicionar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
-        
+
         $object   = new RiscoTipo();
         $object->setNome($postdata->nome);
         $object->setIdStatus($postdata->id_status);
 
-        if($object->adicionar()) { echo "Tipo de Risco adicionado com sucesso!"; } else { /* Failure */ }
+      if($object->adicionar()) { echo "Risk type added successfully!"; } else { /* Failure */ }
 
-        break;    
-    
+        break;
+
     case "atualizar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id = $postdata->id;
         $object = RiscoTipo::buscar_por_id($id);
         $object->setNome($postdata->nome);
         $object->setIdStatus($postdata->id_status);
 
-        if($object->atualizar()) { echo "Tipo de Risco atualizado com sucesso!"; } else { echo "Nenhuma alteração realizada!"; }
-        
+        if($object->atualizar()) { echo "Risk type updated successfully!"; } else { echo "Nothing changed!"; }
+
         break;
-        
+
     case "apagar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id = (int)$postdata->recordId;
-        
+
         $object = RiscoTipo::buscar_por_id($id);
 
-        if($object && $object->apagar()) { echo "Tipo de Risco deletado com sucesso!"; } else { /* Failure */ }
-        
+      if($object && $object->apagar()) { echo "Risk type deleted successfully!"; } else { /* Failure */ }
+
         break;
-        
+
     default: "";
 }
 
 exit;
-
-  

@@ -2,16 +2,16 @@
 
 require_once('initialize.php');
 
-if(isset($_REQUEST["acao"])){ $acao = $_REQUEST["acao"]; } 
+if(isset($_REQUEST["acao"])){ $acao = $_REQUEST["acao"]; }
 
 switch ($acao) {
-        
+
     case "adicionar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
-        
+
         $object = new Risco();
-        
+
         $object->setTitulo($postdata->titulo);
         $object->setCausa($postdata->causa);
         $object->setEfeito($postdata->efeito);
@@ -20,16 +20,16 @@ switch ($acao) {
         $object->setIdUsuario($postdata->id_usuario);
         $object->setIdStatus($postdata->id_status);
 
-        if($object->adicionar()) { echo "Risco adicionado com sucesso!"; } else { /* Failure */ }
+      if($object->adicionar()) { echo "Risk added successfully!"; } else { /* Failure */ }
 
-        break;    
-    
+        break;
+
     case "atualizar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
 
         $object = Risco::buscar_por_id($postdata->id);
-        
+
         $object->setTitulo($postdata->titulo);
         $object->setCausa($postdata->causa);
         $object->setEfeito($postdata->efeito);
@@ -37,22 +37,22 @@ switch ($acao) {
         $object->setIdEarCategoria($postdata->id_ear_categoria);
         $object->setIdStatus($postdata->id_status);
 
-        if($object->atualizar()) { echo "Risco atualizado com sucesso!"; } else { echo "Nenhuma alteração realizada!"; }
-        
+        if($object->atualizar()) { echo "Risk updated successfully!"; } else { echo "Nothing changed!"; }
+
         break;
-        
+
     case "apagar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
-        
+
         $risco = Risco::buscar_por_id($postdata->recordId);
 
-        if($risco && $risco->apagar()) { echo "Risco deletado com sucesso!"; } else { /* Failure */ }
-        
+      if($risco && $risco->apagar()) { echo "Risk deleted successfully!"; } else { /* Failure */ }
+
         break;
-        
+
     case "buscar_todos":
-        
+
         $array = Risco::buscar_todos();
         $c = 0;
         foreach($array as $item):
@@ -75,11 +75,11 @@ switch ($acao) {
 
         $json = json_encode($result);
         if ($c > 0) echo $json;
-        
+
         break;
-        
+
     case "buscar_por_id":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id = (int)$postdata->id;
         $result = array();
@@ -103,11 +103,11 @@ switch ($acao) {
 
         $json = json_encode($result);
         echo $json;
-        
+
         break;
-        
+
     case "buscar_por_id_risco_e_id_projeto":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id_risco = (int)$postdata->id_risco;
         $id_projeto = (int)$postdata->id_projeto;
@@ -130,16 +130,16 @@ switch ($acao) {
 
         $json = json_encode($result);
         echo $json;
-        
+
         break;
-        
+
     case "buscar_riscos_por_id_projeto":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $array = Risco::buscar_riscos_por_id_projeto((int)$postdata->id);
-        
+
         $c = 0;
-        foreach($array as $item):  
+        foreach($array as $item):
             $result[$c] = array(
               'id' => $item->getId(),
               'titulo' => $item->getTitulo(),
@@ -161,19 +161,19 @@ switch ($acao) {
 
         $json = json_encode($result);
         if ($c > 0) echo $json;
-        
+
         break;
-        
+
     case "buscar_grafico_riscos_por_categorias":
-        
+
         $array = Risco::buscar_grafico_riscos_por_categorias();
-        
+
         $result = array(
             "chart" => array(
-              "caption" => "Riscos por Categoria",
-              "subCaption" => "Quantidade de Riscos por Categoria",
-              "xaxisname" => "Categorias",
-              "yaxisname" => "Quantidade de Riscos (Todos)",
+              "caption" => "Risks by category",
+              "subCaption" => "Amount of risks by category",
+              "xaxisname" => "Categories",
+              "yaxisname" => "Amount of risks (All)",
               "theme" => "fint",
               "toolTipBorderColor" => "#FFFFFF",
               "toolTipBgColor" => "#666666",
@@ -188,7 +188,7 @@ switch ($acao) {
         );
 
         $result["data"] = array();
-        
+
         $c = 0;
         foreach($array as $item):
             array_push($result["data"], array(
@@ -196,24 +196,24 @@ switch ($acao) {
                 "value" => $item->getQtdRiscos()
                 )
             );
-        
+
             $c++;
         endforeach;
 
         $json = json_encode($result);
         if ($c > 0) echo $json;
-        
+
         break;
-        
+
     case "buscar_grafico_riscos_por_projetos":
-        
+
         $array = Risco::buscar_grafico_riscos_por_projetos();
-        
+
         $result["chart"] = array();
         $result = array(
             "chart" => array(
-                "caption" => "Riscos por Projeto",
-                "subcaption" => "Quantidade de Riscos por Projeto",
+                "caption" => "Risks by project",
+                "subcaption" => "Amount of risks bu projects",
                 "startingangle" => "120",
                 "showlabels" => "0",
                 "showlegend" => "1",
@@ -221,7 +221,7 @@ switch ($acao) {
                 "slicingdistance" => "8",
                 "showpercentvalues" => "1",
                 "showpercentintooltip" => "0",
-                "plottooltext" => 'Projeto : $label Total de Riscos : $datavalue',
+                "plottooltext" => 'Project : $label Amount of risks : $datavalue',
                 "theme" => "fint",
                 //"showToolTip" => "0",
                 "toolTipBorderColor" => "#FFFFFF",
@@ -238,24 +238,24 @@ switch ($acao) {
                 "value" => $item->getQtdRiscos()
                 )
             );
-        
+
             $c++;
         endforeach;
 
         $json = json_encode($result);
         if ($c > 0) echo $json;
-        
+
         break;
-        
+
     case "buscar_grafico_riscos_por_demandas":
-        
+
         $array = Risco::buscar_grafico_riscos_por_demandas();
-        
+
         $result["chart"] = array();
         $result = array(
             "chart" => array(
-                "caption" => "Riscos por Atividade",
-                "subcaption" => "Quantidade de Riscos por Atividade",
+                "caption" => "Risks by activity",
+                "subcaption" => "Amount of risks by activity",
                 "startingangle" => "120",
                 "showlabels" => "0",
                 "showlegend" => "1",
@@ -263,7 +263,7 @@ switch ($acao) {
                 "slicingdistance" => "8",
                 "showpercentvalues" => "1",
                 "showpercentintooltip" => "0",
-                "plottooltext" => 'Atividade : $label Total de Riscos : $datavalue',
+                "plottooltext" => 'Activity : $label Amount of risks : $datavalue',
                 "theme" => "fint",
                 //"showToolTip" => "0",
                 "toolTipBorderColor" => "#FFFFFF",
@@ -280,24 +280,24 @@ switch ($acao) {
                 "value" => $item->getQtdRiscos()
                 )
             );
-        
+
             $c++;
         endforeach;
 
         $json = json_encode($result);
         if ($c > 0) echo $json;
-        
+
         break;
-        
+
     case "buscar_grafico_problemas_por_projetos":
-        
+
         $array = Risco::buscar_grafico_problemas_por_projetos();
-        
+
         $result["chart"] = array();
         $result = array(
             "chart" => array(
-                "caption" => "Problemas por Projeto",
-                "subcaption" => "Quantidade de Problemas por Projeto",
+                "caption" => "Problems by project",
+                "subcaption" => "Amount of problems by project",
                 "startingangle" => "120",
                 "showlabels" => "0",
                 "showlegend" => "1",
@@ -305,7 +305,7 @@ switch ($acao) {
                 "slicingdistance" => "8",
                 "showpercentvalues" => "1",
                 "showpercentintooltip" => "0",
-                "plottooltext" => 'Projeto : $label Total de Problemas : $datavalue',
+                "plottooltext" => 'Project : $label Amount of problems : $datavalue',
                 "theme" => "fint",
                 //"showToolTip" => "0",
                 "toolTipBorderColor" => "#FFFFFF",
@@ -322,24 +322,24 @@ switch ($acao) {
                 "value" => $item->getQtdProblemas()
                 )
             );
-        
+
             $c++;
         endforeach;
 
         $json = json_encode($result);
         if ($c > 0) echo $json;
-        
+
         break;
-        
+
     case "buscar_grafico_problemas_por_demandas":
-        
+
         $array = Risco::buscar_grafico_problemas_por_demandas();
-        
+
         $result["chart"] = array();
         $result = array(
             "chart" => array(
-                "caption" => "Problemas por Atividade",
-                "subcaption" => "Quantidade de Problemas por Atividade",
+                "caption" => "Problems by activity",
+                "subcaption" => "Amount of problems by activity",
                 "startingangle" => "120",
                 "showlabels" => "0",
                 "showlegend" => "1",
@@ -347,7 +347,7 @@ switch ($acao) {
                 "slicingdistance" => "8",
                 "showpercentvalues" => "1",
                 "showpercentintooltip" => "0",
-                "plottooltext" => 'Atividade : $label Total de Problemas : $datavalue',
+                "plottooltext" => 'Activity : $label Amount of problems : $datavalue',
                 "theme" => "fint",
                 //"showToolTip" => "0",
                 "toolTipBorderColor" => "#FFFFFF",
@@ -364,18 +364,16 @@ switch ($acao) {
                 "value" => $item->getQtdProblemas()
                 )
             );
-        
+
             $c++;
         endforeach;
 
         $json = json_encode($result);
         if ($c > 0) echo $json;
-        
+
         break;
-        
+
     default: "";
 }
 
 exit;
-
-  

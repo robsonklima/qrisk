@@ -2,12 +2,12 @@
 
 require_once('initialize.php');
 
-if(isset($_REQUEST["acao"])){ $acao = $_REQUEST["acao"]; } 
+if(isset($_REQUEST["acao"])){ $acao = $_REQUEST["acao"]; }
 
 switch ($acao) {
-        
-    case "buscar_todos":  
-        
+
+    case "buscar_todos":
+
         $array = FileUpload::find_all_join();
         $c = 0;
         foreach($array as $item):
@@ -24,13 +24,13 @@ switch ($acao) {
 
         $json = json_encode($result);
         if ($c > 0) echo $json;
-        
+
         break;
-        
+
     case "buscar_por_id":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
-        
+
         $id       = (int)$postdata->id;
         $result = array();
 
@@ -43,11 +43,11 @@ switch ($acao) {
 
         $json = json_encode($result);
         echo $json;
-        
+
         break;
-    
+
     case "adicionar":
-        
+
         $erro = false;
         $diretorio = "../upload/";
         $descricao = $_POST['descricao'];
@@ -55,11 +55,11 @@ switch ($acao) {
         $arquivo = $diretorio . basename($_FILES["file"]["name"]);
 
         if (pathinfo($arquivo, PATHINFO_EXTENSION) != 'xml') {
-            $erro .= "Extensão inválida"; 
-        } else if (file_exists($arquivo)) { 
-            $erro .= "O arquivo já existe"; 
-        } else if (!move_uploaded_file($_FILES["file"]["tmp_name"], $arquivo)) { 
-            $erro .= "Não foi possível copiar o arquivo para o seu diretório"; 
+            $erro .= "Invalid extension";
+        } else if (file_exists($arquivo)) {
+            $erro .= "File already exists";
+        } else if (!move_uploaded_file($_FILES["file"]["tmp_name"], $arquivo)) {
+            $erro .= "Unable to copy file to path";
         } else {
             // adiciona informacoes do arquivo no banco de dados
             $object = new FileUpload();
@@ -69,7 +69,7 @@ switch ($acao) {
             $object->setTipo(pathinfo($arquivo, PATHINFO_EXTENSION));
             $object->setIdUsuario($id_usuario);
             $object->adicionar();
-            
+
             // importa conteudo do arquivo
             $xml=simplexml_load_file($arquivo) or die("Error: Cannot create object");
             foreach($xml->children() as $projeto) {
@@ -82,7 +82,7 @@ switch ($acao) {
                     $proj->setIdUsuario($id_usuario);
                     $proj->setIdStatus($projeto->status);
                     $proj->adicionar();
-                    
+
                     salva_log('Projeto Adicionado', $proj->getNome());
                 }
 
@@ -92,8 +92,8 @@ switch ($acao) {
                     $per->setNome($projeto->demanda->recurso->usuario->perfil->nome);
                     $per->setIdStatus($projeto->demanda->recurso->usuario->perfil->status);
                     $per->adicionar();
-                    
-                    salva_log('Perfil Adicionado', $per->getNome());
+
+                    salva_log('User perfil added', $per->getNome());
                 }
 
                 // usuario
@@ -105,8 +105,8 @@ switch ($acao) {
                     $usu->setIdUsuarioPerfil($per->getId());
                     $usu->setIdStatus($projeto->demanda->recurso->usuario->status);
                     $usu->adicionar();
-                    
-                    salva_log('Usuário Adicionado', $usu->getNome());
+
+                    salva_log('User added', $usu->getNome());
                 }
 
                 // recurso funcao
@@ -116,8 +116,8 @@ switch ($acao) {
                     $fun->setValorHora($projeto->demanda->recurso->funcao->valor_hora);
                     $fun->setIdStatus($projeto->demanda->recurso->funcao->status);
                     $fun->adicionar();
-                    
-                    salva_log('Função Adicionada', $fun->getNome());
+
+                    salva_log('Function added', $fun->getNome());
                 }
 
                 // recurso
@@ -128,8 +128,8 @@ switch ($acao) {
                     $rec->setIdUsuario($usu->getId());
                     $rec->setIdStatus($projeto->demanda->recurso->status);
                     $rec->adicionar();
-                    
-                    salva_log('Recurso Adicionado', $rec->getNome());
+
+                    salva_log('Resource added', $rec->getNome());
                 }
 
                 // demanda
@@ -145,35 +145,35 @@ switch ($acao) {
                     $dem->setQtdHoras($projeto->demanda->qtd_horas);
                     $dem->setIdStatus($projeto->demanda->status);
                     $dem->adicionar();
-                    
-                    salva_log('Demanda Adicionada', $dem->getTitulo());
-                }   
+
+                    salva_log('Activity added', $dem->getTitulo());
+                }
             }
         }
-        
-        if (!$erro) { echo "Arquivo adicionado com sucesso!"; } else { echo $erro; }    
 
-        break;    
-    
+        if (!$erro) { echo "File added successfully!"; } else { echo $erro; }
+
+        break;
+
     case "apagar":
-        
+
         $postdata = json_decode(file_get_contents("php://input"));
         $id = (int)$postdata->recordId;
-        
+
         $object = FileUpload::buscar_por_id($id);
-        
+
         $arquivo = "../upload/".$object->getNome();
-        
+
         if (unlink($arquivo))
         {
-            $object && $object->apagar(); 
-            echo "Arquivo deletado com sucesso!";
-            } else { 
-                echo "O arquivo não pode ser deletado!";
-            }    
-        
+            $object && $object->apagar();
+            echo "File deleted successfully!";
+            } else {
+                echo "Unable to delete file!";
+            }
+
         break;
-        
+
     default: "";
 }
 
