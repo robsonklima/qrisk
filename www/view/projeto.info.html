@@ -1,0 +1,296 @@
+<!-- content -->
+<div id="page-wrapper">
+    <!-- title -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 page-title-div">
+          <div class="well">
+              {{::pageTitle}}
+              <div class="pull-right">
+                  <a href="#/projeto.get" class="btn btn-default btn-circle">
+                      <i class="glyphicon glyphicon-arrow-left"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- title -->
+    <!-- messages -->
+    <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+           <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
+           <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert>
+       </div>
+    </div>
+    <!-- messages -->
+    <!-- row -->
+    <div class="row">
+        <!-- col -->
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+            <!-- panel -->
+            <div class="panel panel-primary">
+                <!-- panel head -->
+                <div class="panel-heading">
+                    Details <small>informations</small>
+                </div>
+                <!-- panel head -->
+                <!-- panel body -->
+                <div class="panel-body">
+                    <!-- table -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="col-xs-4 col-md-4 col-lg-4">Name</th>
+                                <th>{{projeto.nome}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Scope</td>
+                                <td>{{projeto.escopo}}</td>
+                            </tr>
+                            <tr>
+                                <td>User add</td>
+                                <td>{{projeto.usuario_nome}}</td>
+                            </tr>
+                            <tr>
+                                <td>Amount</td>
+                                <td>{{projeto.projeto_valor}}</td>
+                            </tr>
+                            <tr>
+                                <td>Date</td>
+                                <td>{{projeto.data_cadastro}}</td>
+                            </tr>
+                            <tr>
+                                <td>Status</td>
+                                <td>{{projeto.status_nome}}</td>
+                            </tr>
+                            <tr>
+                                <td>Riscos</td>
+                                <td>{{projeto_analise.qtd_riscos}} ratings, {{projeto.qtd_riscos}} added</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- table -->
+                </div>
+                <!-- panel body -->
+            </div>
+            <!-- panel -->
+            <!-- panel -->
+            <div class="panel panel-primary" ng-show="projeto_analise.qtd_riscos>0">
+                <!-- panel head -->
+                <div class="panel-heading">
+                    Risks <small>qualification and quantification</small>
+                </div>
+                <!-- panel head -->
+                <!-- panel body -->
+                <div class="panel-body panel-responsive">
+                    <!-- table div -->
+                    <div class="table-responsive">
+                        <!-- table -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th><small>Title</small></th>
+                                    <th><small>Type</small></th>
+                                    <th class="align-center"><small>Consolidated</small></th>
+                                    <th class="align-center"><small>Cost</small></th>
+                                    <th class="align-center">
+                                        <small>Impact($)
+                                            <!-- tooltip -->
+                                            <i class="glyphicon glyphicon-info-sign">
+                                                <md-tooltip md-visible="tooltip1" md-direction="top">
+                                                    Costo of the project x cost
+                                                </md-tooltip>
+                                            </i>
+                                            <!-- tooltip -->
+                                        </small>
+                                    </th>
+                                    <th class="align-center"><small>Prob.</small></th>
+                                    <th class="align-center">
+                                        <small>Expected($)
+                                            <!-- tooltip -->
+                                            <i class="glyphicon glyphicon-info-sign">
+                                                <md-tooltip md-visible="tooltip2" md-direction="top">
+                                                    Impact($) x Probability
+                                                </md-tooltip>
+                                            </i>
+                                            <!-- tooltip -->
+                                        </small>
+                                    </th>
+                                    <th class="align-center"><small>Degree</small></th>
+                                    <th class="align-center"><small>Priority</small></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="risco in riscos">
+                                    <td><small>{{risco.titulo | ellipsis:10}}</small></td>
+                                    <td><small>{{risco.risco_tipo_nome | ellipsis:10}}</small></td>
+                                    <td class="align-center"><small>{{risco.impacto_consolidado}}</small></td>
+                                    <td class="align-center"><small>{{risco.analise_custo}}</small></td>
+                                    <td class="align-center"><small>{{risco.projeto_impacto}}</small></td>
+                                    <td class="align-center"><small>{{risco.analise_probabilidade}}</small></td>
+                                    <td class="align-center"><small>{{risco.valor_esperado}}</small></td>
+                                    <td class="align-center"><small>{{risco.grau_qualificacao}}</small></td>
+                                    <td class="align-center"><small class="{{risco.prioridade}}">{{risco.prioridade}}</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- table -->
+                    </div>
+                    <!-- table div -->
+                </div>
+                <!-- panel body -->
+            </div>
+            <!-- panel -->
+            <!-- panel -->
+            <div class="panel panel-primary panel-mb" ng-show="projeto_analise.qtd_riscos>0">
+                <!-- panel head -->
+                <div class="panel-heading">
+                    Qualitative analysis <small>average of analysis</small>
+                </div>
+                <!-- panel head -->
+                <!-- panel body -->
+                <div class="panel-body">
+                    <!-- table div -->
+                    <div class="table-responsive">
+                        <!-- table -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th class="align-right">Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        General Weight
+                                        <!-- tooltip -->
+                                        <i class="glyphicon glyphicon-info-sign">
+                                            <md-tooltip md-visible="tooltip3" md-direction="right">
+                                                Sum of qualification degree of the risks
+                                            </md-tooltip>
+                                        </i>
+                                        <!-- tooltip -->
+                                    </td>
+                                    <td class="align-right">{{projeto_analise.peso_geral}}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Qualification Degree
+                                        <!-- tooltip -->
+                                        <i class="glyphicon glyphicon-info-sign">
+                                            <md-tooltip md-visible="tooltip4" md-direction="right">
+                                                Higher qualification degree of the risks
+                                            </md-tooltip>
+                                        </i>
+                                        <!-- tooltip -->
+                                    </td>
+                                    <td class="align-right">{{projeto_analise.grau_qualificacao}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Amount of Risks</td>
+                                    <td class="align-right">{{projeto_analise.qtd_riscos}}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        General Risk
+                                        <!-- tooltip -->
+                                        <i class="glyphicon glyphicon-info-sign">
+                                            <md-tooltip md-visible="tooltip5" md-direction="right">
+                                                General Weight / Amount of the risks / Qualification Degree
+                                            </md-tooltip>
+                                        </i>
+                                        <!-- tooltip -->
+                                    </td>
+                                    <td class="align-right">{{projeto_analise.risco_geral}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- table -->
+                    </div>
+                    <!-- table div -->
+                </div>
+                <!-- panel body -->
+            </div>
+            <!-- panel -->
+            <!-- panel -->
+            <div class="panel panel-primary panel-mb" ng-show="projeto_analise.qtd_riscos>0">
+                <!-- panel head -->
+                <div class="panel-heading">
+                     Quantitative Analysis <small>expected costs</small>
+                </div>
+                <!-- panel head -->
+                <!-- panel body: valores esperados -->
+                <div class="panel-body">
+                    <!-- table div -->
+                    <div class="table-responsive">
+                        <!-- table -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="align-center">
+                                        Best Case
+                                        <!-- tooltip -->
+                                        <i class="glyphicon glyphicon-info-sign">
+                                            <md-tooltip md-visible="tooltip6" md-direction="top">
+                                                Cost of the project - cost of the impact of the risks of oportunity
+                                            </md-tooltip>
+                                        </i>
+                                        <!-- tooltip -->
+                                    </th>
+                                    <th class="align-center">
+                                        Base Cost
+                                        <!-- tooltip -->
+                                        <i class="glyphicon glyphicon-info-sign">
+                                            <md-tooltip md-visible="tooltip7" md-direction="top">
+                                                Cost of the project
+                                            </md-tooltip>
+                                        </i>
+                                        <!-- tooltip -->
+                                    </th>
+                                    <th class="align-center">
+                                        Expected cost
+                                        <!-- tooltip -->
+                                        <i class="glyphicon glyphicon-info-sign">
+                                            <md-tooltip md-visible="tooltip8" md-direction="top">
+                                                Project cost + expected against cost - expected oportunity cost
+                                            </md-tooltip>
+                                        </i>
+                                        <!-- tooltip -->
+                                    </th>
+                                    <th class="align-center">
+                                        Pior Caso
+                                        <!-- tooltip -->
+                                        <i class="glyphicon glyphicon-info-sign">
+                                            <md-tooltip md-visible="tooltip9" md-direction="top">
+                                                Vlr proj + vlr imp riscos de ameaça
+                                            </md-tooltip>
+                                        </i>
+                                        <!-- tooltip -->
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="align-center">{{valor_esperado.melhor_caso}}</td>
+                                    <td class="align-center">{{valor_esperado.valor_base}}</td>
+                                    <td class="align-center">{{valor_esperado.valor_esperado}}</td>
+                                    <td class="align-center">{{valor_esperado.pior_caso}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- table -->
+                    </div>
+                    <!-- table div -->
+                </div>
+                <!-- panel body: valores esperados -->
+            </div>
+            <!-- panel -->
+        </div>
+        <!-- col -->
+    </div>
+    <!-- row -->
+</div>
+<!-- content -->

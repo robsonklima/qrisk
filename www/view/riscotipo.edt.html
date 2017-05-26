@@ -1,0 +1,63 @@
+<div id="page-wrapper">
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 page-title-div">
+          <div class="well">
+              {{::pageTitle}}
+              <div class="pull-right">
+                  <a href="#/riscotipo.get" class="btn btn-default btn-circle">
+                      <i class="glyphicon glyphicon-arrow-left"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- messages -->
+    <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+           <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
+           <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert>
+       </div>
+    </div>
+    <!-- messages -->
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Update
+                </div>
+                <div class="panel-body">
+                    <form name="form">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input ng-model="riscotipo.nome" class="form-control" type="text" name="nome"
+                                   ng-required="true" ng-minlength="5"/>
+                            <!-- form group validation -->
+                            <div ng-show="form.nome.$dirty" ng-messages="form.nome.$error">
+                                <p class="help-block-error" ng-message="required">Please, type the name!</p>
+                                <p class="help-block-error" ng-message="minlength">The name field must be at least 5 characters long.</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Status</label>
+                            <select class="form-control" ng-model="riscotipo.id_status" ng-required="true" name="id_status"
+                                    ng-options="status.id as status.nome for status in statuss | orderBy:'nome'">
+                                <option value="">Select the status</option>
+                            </select>
+                            <!-- form group validation -->
+                            <div ng-show="form.id_status.$dirty" ng-messages="form.id_status.$error">
+                                <p class="help-block-error" ng-message="required">Please, type the status!</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                    </form>
+                    <button class="btn btn-primary btn-block" ng-click="edtItem(riscotipo)"
+                        ng-disabled="form.$invalid">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

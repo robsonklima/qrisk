@@ -1,0 +1,94 @@
+<!-- content -->
+<div id="page-wrapper">
+    <!-- row -->
+    <div class="row">
+       <!-- title -->
+       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 page-title-div">
+          <div class="well">
+              {{::pageTitle}}
+              <div class="pull-right">
+                  <a href="#/dashboard" class="btn btn-default btn-circle">
+                      <i class="glyphicon glyphicon-arrow-left"></i>
+                  </a>  
+              </div>
+          </div> 
+       </div>
+       <!-- title -->
+    </div>
+    <!-- messages -->
+    <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+           <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
+           <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert> 
+       </div>
+    </div>
+    <!-- messages --> 
+    <!-- row -->
+    <div class="row">
+        <!-- col -->
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2" ng-show="risco_analise_detalhada"> 
+            <!-- panel -->
+            <div class="panel panel-primary">
+                <!-- panel head -->
+                <div class="panel-heading">
+                    Análises Realizadas <small>usuário: {{nomeUsuario}}</small>
+                </div>
+                <!-- panel head -->
+                <!-- panel body -->
+                <div class="panel-body panel-responsive"> 
+                    <!-- table div: analise qualitativa do risco -->
+                    <div class="table-responsive">
+                        <!-- table -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th><small>Risco</small></th>
+                                    <th><small>Projeto</small></th>
+                                    <th class="align-center"><small>Custo</small></th>
+                                    <th class="align-center"><small>Cronogr.</small></th>
+                                    <th class="align-center"><small>Escopo</small></th>
+                                    <th class="align-center"><small>Qualidade</small></th>
+                                    <th class="align-center"><small>Probab.</small></th>
+                                    <th class="align-center"><small>Data</small></th>
+                                    <th class="align-center"><small>Ações</small></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="analise_detalhada in risco_analise_detalhada">
+                                    <td><small>{{::analise_detalhada.risco_nome}}</small></td>
+                                    <td><small>{{::analise_detalhada.projeto_nome | ellipsis:12}}</small></td>
+                                    <td class="align-center"><small>{{::analise_detalhada.custo}}</small></td>
+                                    <td class="align-center"><small>{{::analise_detalhada.cronograma}}</small></td>
+                                    <td class="align-center"><small>{{::analise_detalhada.escopo}}</small></td>
+                                    <td class="align-center"><small>{{::analise_detalhada.qualidade}}</small></td>
+                                    <td class="align-center"><small>{{::analise_detalhada.probabilidade}}</small></td>
+                                    <td class="align-center"><small>{{::analise_detalhada.data_cadastro}}</small></td>
+                                    <td class="align-center td-button">
+                                        <a class="action-btn" href="" ng-click="delItem(analise_detalhada)">
+                                            <i class="glyphicon glyphicon-trash small-icon" title="Excluir"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- table -->
+                    </div>
+                    <!-- table div: analise qualitativa do risco -->
+                </div>
+                <!-- panel body -->
+            </div>
+            <!-- panel -->
+        </div>
+        <!-- col -->
+        <!-- local messages -->
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2"> 
+            <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert> 
+            <ui-alert title="Mensagem" type="warning" message="'Você ainda não analisou nenhum risco.'" 
+                      ng-show="!risco_analise_detalhada"></ui-alert>
+        </div>
+        <!-- local messages -->
+    </div>
+    <!-- row -->
+</div>
+<!-- content -->

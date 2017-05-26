@@ -1,0 +1,150 @@
+02/04/2017 15:09:54 | Logs Deletados: Usuário Id: 3
+02/04/2017 15:09:57 | Database query failed: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near `order by 		d.data_cadastro` at line 8<br /><br />Last SQL query: select 			d.*, p.nome as projeto_nome, r.nome as recurso_nome
+                from 			demanda d
+                inner join 		projeto p on p.id = d.id_projeto
+                inner join 		recurso r on r.id = d.id_recurso
+                inner join 		usuario u on u.id = r.id_usuario
+                where			(1=1)
+                and				u.id = 
+                order by 		d.data_cadastro: 
+02/04/2017 15:10:46 | Database query failed: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near `order by 		d.data_cadastro` at line 8<br /><br />Last SQL query: select 			d.*, p.nome as projeto_nome, r.nome as recurso_nome
+                from 			demanda d
+                inner join 		projeto p on p.id = d.id_projeto
+                inner join 		recurso r on r.id = d.id_recurso
+                inner join 		usuario u on u.id = r.id_usuario
+                where			(1=1)
+                and				u.id =  
+                order by 		d.data_cadastro: 
+02/04/2017 15:10:48 | Database query failed: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near `order by 		d.data_cadastro` at line 8<br /><br />Last SQL query: select 			d.*, p.nome as projeto_nome, r.nome as recurso_nome
+                from 			demanda d
+                inner join 		projeto p on p.id = d.id_projeto
+                inner join 		recurso r on r.id = d.id_recurso
+                inner join 		usuario u on u.id = r.id_usuario
+                where			(1=1)
+                and				u.id =  
+                order by 		d.data_cadastro: 
+02/04/2017 15:11:37 | Database query failed: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near `order by 		d.data_cadastro` at line 8<br /><br />Last SQL query: select 			d.*, p.nome as projeto_nome, r.nome as recurso_nome
+                from 			demanda d
+                inner join 		projeto p on p.id = d.id_projeto
+                inner join 		recurso r on r.id = d.id_recurso
+                inner join 		usuario u on u.id = r.id_usuario
+                where			(1=1)
+                and				u.id =  
+                order by 		d.data_cadastro: 
+02/04/2017 15:13:39 | Database query failed: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near `Group By    p.id
+            Order by	p.nome ASC` at line 9<br /><br />Last SQL query: 
+            SELECT      
+                        p.*
+            FROM        projeto p
+            inner join	demanda d on p.id = d.id_projeto
+            inner join	recurso r on r.id = d.id_recurso
+            inner join	usuario u on u.id = r.id_usuario
+            WHERE       (1=1)
+            and			u.id = 
+            Group By    p.id
+            Order by	p.nome ASC: 
+02/04/2017 15:20:57 | Database query failed: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near `(d.data_cadastro,`%d/%m/%Y às %H:%i`) as data_cadastro, 
+                      ` at line 4<br /><br />Last SQL query: select 			d.id
+                                , d.titulo
+                                , d.id_projeto
+                                date_format(d.data_cadastro,`%d/%m/%Y às %H:%i`) as data_cadastro, 
+                                p.nome as projeto_nome, r.nome as recurso_nome
+                from 			demanda d
+                inner join 		projeto p on p.id = d.id_projeto
+                inner join 		recurso r on r.id = d.id_recurso
+                inner join 		usuario u on u.id = r.id_usuario
+                where			(1=1)
+                and				u.id = 3
+                order by 		d.data_cadastro: 
+02/04/2017 15:21:36 | Database query failed: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near `.data_cadastro
+                                , d.*
+                           ` at line 1<br /><br />Last SQL query: select 			date_format(d.data_cadastro,`%d/%m/%Y às %H:%i`) as d.data_cadastro
+                                , d.*
+                                , p.nome as projeto_nome, r.nome as recurso_nome
+                from 			demanda d
+                inner join 		projeto p on p.id = d.id_projeto
+                inner join 		recurso r on r.id = d.id_recurso
+                inner join 		usuario u on u.id = r.id_usuario
+                where			(1=1)
+                and				u.id = 3
+                order by 		d.data_cadastro: 
+02/04/2017 15:23:06 | Database query failed: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ` d.*
+                                , date_format(d.data_entrega,`%d/%m/%Y`) as` at line 1<br /><br />Last SQL query: select 			, d.*
+                                , date_format(d.data_entrega,`%d/%m/%Y`) as data_entrega                                
+                                , p.nome as projeto_nome, r.nome as recurso_nome
+                from 			demanda d
+                inner join 		projeto p on p.id = d.id_projeto
+                inner join 		recurso r on r.id = d.id_recurso
+                inner join 		usuario u on u.id = r.id_usuario
+                where			(1=1)
+                and				u.id = 3
+                order by 		d.data_cadastro: 
+02/04/2017 15:23:18 | Database query failed: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ` d.*
+                                
+                                , p.nome a` at line 1<br /><br />Last SQL query: select 			, d.*
+                                
+                                , p.nome as projeto_nome, r.nome as recurso_nome
+                from 			demanda d
+                inner join 		projeto p on p.id = d.id_projeto
+                inner join 		recurso r on r.id = d.id_recurso
+                inner join 		usuario u on u.id = r.id_usuario
+                where			(1=1)
+                and				u.id = 3
+                order by 		d.data_cadastro: 
+02/04/2017 18:46:46 | Análise de Risco Adicionada: Usuário Id: 3
+02/04/2017 18:47:15 | Análise de Risco Adicionada: Usuário Id: 3
+02/04/2017 18:53:16 | Login: Usuário: cristiano
+08/04/2017 11:46:55 | Tentativa de Login: Usuário: ealmanca
+08/04/2017 11:47:04 | Login: Usuário: cristiano
+08/04/2017 11:47:25 | Login: Usuário: eliano
+08/04/2017 11:54:44 | Login: Usuário: robsonklima
+08/04/2017 12:15:03 | Database query failed: Data too long for column `nome` at row 1<br /><br />Last SQL query: INSERT INTO projeto (nome, escopo, id_usuario, data_cadastro, id_status) VALUES (`Integração cliente Cobra - Manutenção de envio de arquivos`, `Integração Cobra - Enviar o arquivo PND para cada alteração de Status da RAT`, 1, NOW(), 1): 
+08/04/2017 12:17:45 | Database query failed: Data too long for column `nome` at row 1<br /><br />Last SQL query: INSERT INTO projeto (nome, escopo, id_usuario, data_cadastro, id_status) VALUES (`Integração cliente Cobra - Manutenção do envio de arquivos`, `Integração cliente Cobra - Manutenção do envio de arquivos`, 1, NOW(), 1): 
+08/04/2017 12:18:46 | Database query failed: Data too long for column `nome` at row 1<br /><br />Last SQL query: INSERT INTO projeto (nome, escopo, id_usuario, data_cadastro, id_status) VALUES (`Integração Cliente Cobra - Manutenção de Arquivos`, `Integração Cliente Cobra - Manutenção de Arquivos`, 1, NOW(), 1): 
+08/04/2017 12:37:51 | Login: Usuário: eliano
+08/04/2017 12:47:06 | Login: Usuário: robsonklima
+08/04/2017 13:02:56 | Análise de Risco Adicionada: Usuário Id: 1
+08/04/2017 13:07:29 | Análise de Risco Adicionada: Usuário Id: 1
+08/04/2017 13:08:18 | Análise de Risco Adicionada: Usuário Id: 1
+08/04/2017 13:08:52 | Análise de Risco Adicionada: Usuário Id: 1
+08/04/2017 13:09:26 | Análise de Risco Adicionada: Usuário Id: 1
+08/04/2017 13:09:50 | Análise de Risco Adicionada: Usuário Id: 1
+08/04/2017 13:10:19 | Análise de Risco Adicionada: Usuário Id: 1
+08/04/2017 13:10:55 | Análise de Risco Adicionada: Usuário Id: 1
+08/04/2017 15:49:52 | Login: Usuário: robsonklima
+11/04/2017 08:39:41 | Login: Usuário: eliano
+11/04/2017 09:26:02 | Login: Usuário: eliano
+11/04/2017 09:32:02 | Análise de Risco Adicionada: Usuário Id: 2
+11/04/2017 09:32:20 | Análise de Risco Adicionada: Usuário Id: 2
+11/04/2017 09:42:07 | Análise de Risco Adicionada: Usuário Id: 2
+11/04/2017 09:42:30 | Análise de Risco Adicionada: Usuário Id: 2
+11/04/2017 09:42:50 | Análise de Risco Adicionada: Usuário Id: 2
+11/04/2017 09:44:45 | Análise de Risco Adicionada: Usuário Id: 2
+11/04/2017 09:44:57 | Análise de Risco Adicionada: Usuário Id: 2
+11/04/2017 09:45:14 | Análise de Risco Adicionada: Usuário Id: 2
+11/04/2017 09:45:48 | Análise de Risco Adicionada: Usuário Id: 2
+11/04/2017 09:46:11 | Login: Usuário: cristiano
+11/04/2017 09:46:21 | Tentativa de Login: Usuário: robsonklima
+11/04/2017 09:46:22 | Login: Usuário: robsonklima
+11/04/2017 09:54:26 | Login: Usuário: eliano
+11/04/2017 09:56:19 | Login: Usuário: cristiano
+11/04/2017 09:56:48 | Login: Usuário: robsonklima
+11/04/2017 09:59:09 | Login: Usuário: eliano
+11/04/2017 13:49:02 | Login: Usuário: cristiano
+23/04/2017 10:20:50 | Login: Usuário: cristiano
+20/05/2017 00:28:46 | Login: Usuário: cristiano
+20/05/2017 09:35:43 | Login: Usuário: cristiano
+20/05/2017 09:35:54 | Login: Usuário: eliano
+24/05/2017 19:45:22 | Login: Usuário: cristiano
+24/05/2017 19:50:14 | Login: Usuário: robsonklima
+24/05/2017 19:50:53 | Login: Usuário: robsonklima
+24/05/2017 20:00:53 | Tentativa de Login: Usuário: sdfsfd
+24/05/2017 20:00:55 | Tentativa de Login: Usuário: sdfsfd
+24/05/2017 20:13:54 | Tentativa de Login: Usuário: h
+24/05/2017 20:24:02 | Tentativa de Login: Usuário: sdfsdf
+24/05/2017 20:25:33 | Tentativa de Login: Usuário: sadfsdaf
+24/05/2017 20:28:36 | Tentativa de Login: Usuário: sdfsdf
+24/05/2017 20:29:28 | Tentativa de Login: Usuário: sfsdf
+24/05/2017 20:30:25 | Tentativa de Login: Usuário: sadfsdf
+24/05/2017 20:30:38 | Tentativa de Login: Usuário: asdfsda
+24/05/2017 20:31:33 | Login: Usuário: robsonklima

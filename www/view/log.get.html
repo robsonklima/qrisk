@@ -1,0 +1,77 @@
+<div id="page-wrapper">
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 page-title-div">
+          <div class="well">
+              {{::pageTitle}}
+              <div class="pull-right">
+                  <a href="" ng-click="delItems()" class="btn btn-primary btn-circle">
+                      <i class="glyphicon glyphicon-trash"></i>
+                  </a>
+                  <a href="#/dashboard" class="btn btn-default btn-circle">
+                      <i class="glyphicon glyphicon-arrow-left"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+   </div>
+   <!-- messages -->
+   <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+           <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
+           <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert>
+       </div>
+   </div>
+   <!-- messages -->
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+         <div class="row">
+            <div class="col-md-3 col-xs-3">
+               <select ng-model="entryLimit" class="form-control">
+                  <option>5</option>
+                  <option>10</option>
+                  <option>20</option>
+                  <option>50</option>
+
+               </select>
+            </div>
+            <div class="col-md-9 col-xs-9">
+               <input class="form-control" type="text" ng-model="search" ng-change="filter()"
+                  placeholder="Search..." class="form-control" />
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12 col-xs-12">
+               <h5 class="desc-filter">Filtering {{ filtered.length }} of {{ totalItems}} {{pageTitle}}</h5>
+            </div>
+         </div>
+         <br/>
+         <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12" ng-show="filteredItems > 0">
+               <table class="table table-striped table-bordered">
+                  <thead>
+                     <th>
+                         Log
+                         <span class="icon-search">
+                             <a href="" ng-click="sort_by('log');"><i class="glyphicon glyphicon-sort"></i></a>
+                         </span>
+                     </th>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+                        <td><small>{{data.log}}</small></td>
+                     </tr>
+                  </tbody>
+               </table>
+               <div class="align-center" ng-show="filteredItems > 0">
+                  <div pagination="" page="currentPage" on-select-page="setPage(page)" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
+               </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12" >
+                <ui-alert title="Mensagem" type="warning" message="'Your search returned no results.'"
+                          ng-show="filteredItems == 0"></ui-alert>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

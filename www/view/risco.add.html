@@ -1,0 +1,102 @@
+<div id="page-wrapper">
+    
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 page-title-div">
+          <div class="well">
+              {{::pageTitle}}
+              <div class="pull-right">
+                  <a href="#/risco.get" class="btn btn-default btn-circle">
+                      <i class="glyphicon glyphicon-arrow-left"></i>
+                  </a>  
+              </div>
+          </div> 
+      </div>
+    </div>
+    <!-- messages -->
+    <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+           <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
+           <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert> 
+       </div>
+    </div>
+    <!-- messages --> 
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Cadastro
+                </div>
+                <div class="panel-body">
+                    <form name="form">
+                        <!-- hidden inputs-->
+                        <div class="form-group" ng-show="false">
+                            <label class="form-label">Id</label>
+                            <input ng-model="risco.id_usuario" class="form-control" type="text" name="id_usuario"/>
+                        </div>
+                        <!-- hidden inputs-->
+                        <div class="form-group">                
+                            <label class="form-label">Título</label>
+                            <input ng-model="risco.titulo" class="form-control" type="text" name="titulo" 
+                                   ng-required="true" ng-minlength="5"/>
+                            <!-- form group validation -->
+                            <div ng-show="form.titulo.$dirty" ng-messages="form.titulo.$error">
+                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo título!</p>
+                                <p class="help-block-error" ng-message="minlength">O campo título deve ter no mínimo 5 caracteres.</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Causa</label>
+                            <textarea ng-model="risco.causa" class="form-control" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Efeito</label>
+                            <textarea ng-model="risco.efeito" class="form-control" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tipo</label>
+                            <select class="form-control" ng-model="risco.id_risco_tipo" ng-required="true" name="id_risco_tipo"
+                                    ng-options="tipo.id as tipo.nome for tipo in tipos | orderBy:'nome'">
+                                <option value="">Selecione o Tipo</option>
+                            </select>
+                            <!-- form group validation -->
+                            <div ng-show="form.id_risco_tipo.$dirty" ng-messages="form.id_risco_tipo.$error">
+                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo tipo!</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Categoria EAR</label>
+                            <select class="form-control" ng-model="risco.id_ear_categoria" ng-required="true" name="id_ear_categoria"
+                                    ng-options="earCategoria.id as earCategoria.nome for earCategoria in earCategorias | orderBy:'nome'">
+                                <option value="">Selecione a Categoria EAR</option>
+                            </select>
+                            <!-- form group validation -->
+                            <div ng-show="form.id_ear_categoria.$dirty" ng-messages="form.id_ear_categoria.$error">
+                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo categoria EAR!</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Status</label>
+                            <select class="form-control" ng-model="risco.id_status" ng-required="true" name="id_status"
+                                    ng-options="status.id as status.nome for status in statuss | orderBy:'nome'">
+                                <option value="">Select the status</option>
+                            </select>
+                            <!-- form group validation -->
+                            <div ng-show="form.id_status.$dirty" ng-messages="form.id_status.$error">
+                                <p class="help-block-error" ng-message="required">Please, type the status!</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                    </form>
+                    <!-- buttons -->
+                    <button class="btn btn-primary btn-block" ng-click="addItem(risco)" 
+                        ng-disabled="form.$invalid">Save</button>
+                    <!-- buttons -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

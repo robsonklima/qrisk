@@ -1,0 +1,84 @@
+<div id="page-wrapper">
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 page-title-div">
+          <div class="well">
+              {{::pageTitle}}
+              <div class="pull-right">
+                  <a href="#/usuarioperfil.get" class="btn btn-default btn-circle">
+                      <i class="glyphicon glyphicon-arrow-left"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- messages -->
+    <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+           <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
+           <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert>
+       </div>
+    </div>
+    <!-- messages -->
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Update
+                </div>
+                <div class="panel-body">
+                    <form name="form">
+                        <!-- form group -->
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input ng-model="usuarioPerfil.nome" class="form-control" type="text" name="nome"
+                                   ng-required="true" ng-minlength="5"/>
+                            <!-- form group validation -->
+                            <div ng-show="form.nome.$dirty" ng-messages="form.nome.$error">
+                                <p class="help-block-error" ng-message="required">Please, type the name!</p>
+                                <p class="help-block-error" ng-message="minlength">The name field must be at least 5 characters long.</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                        <!-- form group -->
+                        <!-- form group -->
+                        <!-- menus lista -->
+                        <div class="form-group">
+                            <label class="form-label">Selecione os Menus Permitidos</label>
+                            <div class="well">
+                                <!-- scrollable -->
+                                <div class="scrollable">
+                                    <div class="checkbox" ng-repeat="menu in menus">
+                                        <label>
+                                            <input type="checkbox" checklist-model="usuarioPerfil.menus" checklist-value="menu.id" > {{menu.nome}}
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- scrollable -->
+                            </div>
+                        </div>
+                        <!-- menus lista -->
+                        <!-- form group -->
+                        <!-- form group -->
+                        <div class="form-group">
+                            <label class="form-label">Status</label>
+                            <select class="form-control" ng-model="usuarioPerfil.id_status" ng-required="true" name="id_status"
+                                    ng-options="status.id as status.nome for status in statuss | orderBy:'nome'">
+                                <option value="">Select the status</option>
+                            </select>
+                            <!-- form group validation -->
+                            <div ng-show="form.id_status.$dirty" ng-messages="form.id_status.$error">
+                                <p class="help-block-error" ng-message="required">Please, type the status!</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                        <!-- form group -->
+                    </form>
+                    <button class="btn btn-primary btn-block" ng-click="edtUsuarioPerfil(usuarioPerfil)"
+                        ng-disabled="form.$invalid">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

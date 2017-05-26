@@ -1,0 +1,361 @@
+#page-wrapper {
+    min-height: 505px !important;
+}
+
+.login-img {
+    margin-bottom: 8px !important;
+}
+
+.login-header{
+    padding-bottom: 20px;   
+}
+
+.login-header-title{
+    margin-top: 6px;
+}
+
+.login-panel {
+    background-color: #fafafa;
+    padding-bottom: 18px;
+}
+
+.panel-riscos-dashboard {
+    padding-bottom: 5px !important; 
+    padding-top: 6px !important;
+}
+
+.page-header {
+    margin-top: 12px;
+    font-size: 20px;
+}
+
+.top-padding-12 {
+    padding-top: 12px;
+}
+
+.bottom-padding-12 {
+    padding-bottom: 12px;
+}
+
+.bottom-padding-12 {
+    padding-bottom: 12px;
+}
+
+.map-title {
+    color: silver;
+}
+
+.md-toast-content {
+    /*background-color: #3d8cc5 !important;*/
+    position: relative !important;
+}
+
+md-toast {
+    position: fixed;
+    bottom: 56px;
+}
+
+.page-title-div {
+    margin-top: 12px;
+    margin-bottom: 22px;
+}
+
+.loading {
+    background-image: url('../img/loading.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-color: white;
+    height: 86%;
+}
+
+.footer {
+    background-color: transparent;
+    color: darkgrey;
+    padding-top: 10px;
+    padding-bottom: 24px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.material-init {
+    background-color: transparent;
+}
+
+.title-separator {
+    width: 4px !important;
+    font-size: 18px !important;
+}
+
+.back-button {
+    margin-left: 4px;
+    border-radius: 3px;
+}
+
+.pull-right {
+    margin-top: -6px;
+    margin-right: -2px;
+}
+
+.header-title-span {
+    color: dimgray;
+    font-size: 24px;
+}
+
+.md-accent-sidebar {
+    position: fixed;
+    margin-top: 0px !important;
+}
+
+.md-accent-header {
+    padding-top: 8px;
+    padding-bottom: 4px;
+}
+
+.md-accent-title {
+    color: gray;
+    font-size: 14px;
+}
+
+h3 {
+    margin-bottom: 30px;
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.form-control {
+    margin-bottom: 0px;
+}
+
+hr {
+    border-color: #999;
+}
+
+.alert {
+    margin-top: 5px;
+}
+
+.md-toolbar-tools {
+    background-color: #009cdf;
+}
+
+.md-accent {
+    color: #009cdf !important;
+    margin  : 0px !important;
+}
+
+.btn-half {
+    width: 45%;
+}
+
+.pag-button {
+    margin-top: 0px;
+    padding-top: 10px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    text-align: center;
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.desc-filter {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    color: darkgray;
+    font-size: 12px;
+}
+
+.table {
+    margin-top: 0px;
+}
+
+.table-w {
+   width: 100%;
+}
+
+.msg-res {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.form-label {
+    margin-bottom: 5px;
+}
+
+.panel-content {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.panel-default, .panel-mb {
+    padding-bottom: 15px;
+}
+
+.well {
+    margin-bottom: 0px !important;
+    background-color: #fafafa;
+}
+
+.glyphicon {
+    margin-top: 2px;
+}
+
+.glyphicon-plus {
+    margin-top: 0px;
+    margin-left: 2px;
+}
+
+.glyphicon-sort {
+    color: silver;
+}
+
+.glyphicon-arrow-left {
+    margin-top: 1px;
+}
+
+.glyphicon-info-sign {
+    color: silver;
+}
+
+.panel-body {
+    padding-bottom: 0px;
+}
+
+.first-line {
+    border-top: 0px !important;
+}
+
+.table-responsive {
+    margin-bottom: -10px !important;
+}
+
+.inative {
+    color: silver;
+}
+
+.btn-col {
+    width: auto;
+}
+
+small {
+    font-size: 12px !important;
+}
+
+.panel-responsive {
+    padding-bottom: 26px;
+}
+
+.username {
+    color: silver;
+    float: right;
+}
+
+.badge {
+    
+}
+
+.md-ink-ripple span {
+    color: #3d8cc5;
+}
+
+.md-opaque {
+    height: 100% !important;
+    position: fixed;
+}
+
+.help-block {
+    font-size: 12px;   
+    /*font-style: italic;*/
+}
+
+.checkbox {
+    line-height: 18px;
+    font-size: 14px;
+}
+
+.help-block-error {
+    font-size: 12px;   
+    color: darkred;
+    margin-top: 6px;
+}
+
+.label-md {
+    margin-bottom: 16px;
+}
+
+.check-items {
+    margin-bottom: 6px;
+}
+
+.check-box-items {
+    width: 22px;
+}
+
+.list-group {
+    margin-bottom: 0px;
+}
+
+.right-align, .align-right {
+    text-align: right;
+}
+
+.white-bg {
+    background-color: white !important;
+}
+
+.alto {
+    color: darkred;
+}
+
+.medio {
+    color: darkorange;
+}
+
+.baixo {
+    color: darkgreen;
+}
+
+.icon-search {
+    float:right;
+}
+
+.layout-padding {
+    height: 0px;
+    background-color: white;
+    overflow-y: hidden;
+}
+
+.td-button {
+    width: 45px !important;
+}
+
+.glyphicon-search {
+    color: #3d8cc5;
+}
+
+.md-primary {
+    color: #3d8cc5 !important;   
+}
+
+.scrollable {
+    max-height: 200px !important; 
+    overflow: scroll !important;   
+}
+
+i.glyphicon.small-icon {
+    /*font-size: 13px;*/
+    line-height: 10px;
+}
+
+hr { 
+    border-color: #ccc; 
+    opacity: 0.7;
+    margin-top: 30px;
+}

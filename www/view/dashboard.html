@@ -1,0 +1,158 @@
+<!-- content -->
+<div id="page-wrapper">
+    <!-- title -->
+    <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-12 page-title-div">
+          <div class="well">
+              {{::pageTitle}} <span class="username">{{nomeUsuario}}</span>
+          </div>
+       </div>
+    </div>
+    <!-- title -->
+    <!-- row -->
+    <div class="row">
+
+        <!-- col -->
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <!-- panel -->
+            <div class="panel panel-primary" ng-show="riscos">
+                <div class="panel-heading">
+                    Risks <small></smaill>more critical</small>
+                </div>
+                <div class="panel-riscos-dashboard panel-body panel-responsive">
+                    <!-- table div: analise qualitativa do risco -->
+                    <div class="table-responsive">
+                        <!-- table -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th><small>Title</small></th>
+                                    <th><small>Project</small></th>
+                                    <th class="align-center"><small>Level</small></th>
+                                    <th class="align-center"><small>Priority</small></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="risco in riscos">
+                                    <td><small>{{risco.risco_nome | ellipsis:60}}</small></td>
+                                    <td><small>{{risco.projeto_nome | ellipsis:24}}</small></td>
+                                    <td class="align-center"><small>{{risco.grau_qualificacao}}</small></td>
+                                    <td class="align-center {{risco.prioridade}}"><small>{{risco.prioridade}}</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- panel -->
+        </div>
+        <!-- col -->
+
+        <!-- col -->
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <!-- panel -->
+            <div class="panel panel-primary panel-mb" ng-show="riscos_por_categorias">
+                <div class="panel-heading">
+                    Risks <small>by Categories</small>
+                </div>
+                <div class="panel-content">
+                   <div fusioncharts
+                       width="100%"
+                       height="380"
+                       type="column2d"
+                       dataSource="{{riscos_por_categorias}}">
+                   </div>
+                </div>
+            </div>
+            <!-- panel -->
+        </div>
+        <!-- col -->
+
+        <!-- col -->
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <!-- panel -->
+            <div class="panel panel-primary panel-mb" ng-show="riscos_por_projetos">
+                <div class="panel-heading">
+                    Risks <small>by projects</small>
+                </div>
+                <div class="panel-content">
+                    <fusioncharts
+                        width="100%"
+                        height="380"
+                        type="pie2d"
+                        datasource="{{riscos_por_projetos}}"
+                        ng-hide="loading">
+                    </fusioncharts>
+                </div>
+            </div>
+            <!-- panel -->
+        </div>
+        <!-- col -->
+
+        <!-- col -->
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <!-- panel -->
+            <div class="panel panel-primary panel-mb" ng-show="riscos_por_demandas">
+                <div class="panel-heading">
+                    Risks <small>by activities</small>
+                </div>
+                <div class="panel-content">
+                    <fusioncharts
+                        width="100%"
+                        height="380"
+                        type="pie2d"
+                        datasource="{{riscos_por_demandas}}"
+                        ng-hide="loading">
+                    </fusioncharts>
+                </div>
+            </div>
+            <!-- panel -->
+        </div>
+        <!-- col -->
+
+        <!-- col -->
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <!-- panel -->
+            <div class="panel panel-primary panel-mb" ng-show="riscos_por_projetos">
+                <div class="panel-heading">
+                    Risks <small>due to problems</small>
+                </div>
+                <div class="panel-content">
+                    <fusioncharts
+                        width="100%"
+                        height="380"
+                        type="pie2d"
+                        datasource="{{problemas_por_projetos}}"
+                        ng-hide="loading">
+                    </fusioncharts>
+                </div>
+            </div>
+            <!-- panel -->
+        </div>
+        <!-- col -->
+
+        <!-- col -->
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <!-- panel -->
+            <div class="panel panel-primary panel-mb" ng-show="riscos_por_demandas">
+                <div class="panel-heading">
+                    Problems <small>by activities</small>
+                </div>
+                <div class="panel-content">
+                    <fusioncharts
+                        width="100%"
+                        height="380"
+                        type="pie2d"
+                        datasource="{{problemas_por_demandas}}"
+                        ng-hide="loading">
+                    </fusioncharts>
+                </div>
+            </div>
+            <!-- panel -->
+        </div>
+        <!-- col -->
+
+    </div>
+    <!-- row -->
+</div>
+<!-- content -->

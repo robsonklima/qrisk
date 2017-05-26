@@ -1,0 +1,149 @@
+<div id="page-wrapper">
+    <!-- title -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 page-title-div">
+          <div class="well">
+              {{::pageTitle}}
+              <div class="pull-right">
+                  <a href="#/demanda.get" class="btn btn-default btn-circle">
+                      <i class="glyphicon glyphicon-arrow-left"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- title -->
+    <!-- messages -->
+    <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+           <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
+           <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert>
+       </div>
+    </div>
+    <!-- messages -->
+    <!-- row -->
+    <div class="row">
+        <!-- col -->
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+            <!-- panel -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Add
+                </div>
+                <!-- panel body -->
+                <div class="panel-body">
+                    <!-- form -->
+                    <form name="form">
+                        <div class="form-group">
+                            <label class="form-label">Title</label>
+                            <input ng-model="demanda.titulo" class="form-control" type="text" name="titulo"
+                                   ng-required="true" ng-minlength="5"/>
+                            <!-- form group validation -->
+                            <div ng-show="form.titulo.$dirty" ng-messages="form.titulo.$error">
+                                <p class="help-block-error" ng-message="required">Please fill in the title field!</p>
+                                <p class="help-block-error" ng-message="minlength">The title field must be at least 5 characters long.</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Details</label>
+                            <textarea ng-model="demanda.detalhes" class="form-control" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Initial Date</label>
+                            <input class="form-control" type="text" ng-model="demanda.data_inicio"
+                                ng-required="true" name="data_inicio" ui-date/>
+                            <!-- form group validation -->
+                            <div ng-show="form.data_inicio.$dirty" ng-messages="form.data_inicio.$error">
+                                <p class="help-block-error" ng-message="required">Please fill in the initial date field!</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Final Date</label>
+                            <input class="form-control" type="text" ng-model="demanda.data_entrega"
+                                ng-required="true" name="data_entrega" ui-date/>
+                            <!-- form group validation -->
+                            <div ng-show="form.data_entrega.$dirty" ng-messages="form.data_entrega.$error">
+                                <p class="help-block-error" ng-message="required">Please fill in the final date field!</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Hours spent</label>
+                            <input ng-model="demanda.qtd_horas" class="form-control" type="text"
+                                   ng-required="true" name="qtd_horas"/>
+                            <!-- form group validation -->
+                            <div ng-show="form.qtd_horas.$dirty" ng-messages="form.qtd_horas.$error">
+                                <p class="help-block-error" ng-message="required">Please fill in the hours spent field!</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Project</label>
+                            <select class="form-control" ng-model="demanda.id_projeto" ng-required="true" name="id_projeto"
+                                    ng-options="projeto.id as projeto.nome for projeto in projetos | orderBy:'nome'">
+                                <option value="">Select the project</option>
+                            </select>
+                            <!-- form group validation -->
+                            <div ng-show="form.id_projeto.$dirty" ng-messages="form.id_projeto.$error">
+                                <p class="help-block-error" ng-message="required">Please fill in the project field!</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Resource</label>
+                            <select class="form-control" ng-model="demanda.id_recurso" ng-required="true" name="id_recurso"
+                                    ng-options="recurso.id as recurso.nome for recurso in recursos | orderBy:'nome'">
+                                <option value="">Select the resource</option>
+                            </select>
+                            <!-- form group validation -->
+                            <div ng-show="form.id_recurso.$dirty" ng-messages="form.id_recurso.$error">
+                                <p class="help-block-error" ng-message="required">Please fill in the resource field!</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                        <!-- riscos lista -->
+                        <div class="form-group">
+                            <label class="form-label">Select the risks</label>
+                            <div class="well">
+                                <!-- scrollable -->
+                                <div class="scrollable">
+                                    <div class="checkbox" ng-repeat="risco in riscos">
+                                        <label>
+                                            <input type="checkbox" checklist-model="demanda.riscos" checklist-value="risco.id" > {{risco.titulo}}
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- scrollable -->
+                            </div>
+                        </div>
+                        <!-- riscos lista -->
+                        <div class="form-group">
+                            <label class="form-label">Status</label>
+                            <select class="form-control" ng-model="demanda.id_status" ng-required="true" name="id_status"
+                                    ng-options="status.id as status.nome for status in statuss | orderBy:'nome'">
+                                <option value="">Select the status</option>
+                            </select>
+                            <!-- form group validation -->
+                            <div ng-show="form.id_status.$dirty" ng-messages="form.id_status.$error">
+                                <p class="help-block-error" ng-message="required">Please fill in the status field!</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                    </form>
+                    <!-- form -->
+                    <!-- buttons -->
+                    <button class="btn btn-primary btn-block" ng-click="addItem(demanda)"
+                        ng-disabled="form.$invalid">Save</button>
+                    <!-- buttons -->
+                </div>
+                <!-- panel body -->
+            </div>
+            <!-- panel -->
+        </div>
+        <!-- col -->
+    </div>
+    <!-- row -->
+</div>

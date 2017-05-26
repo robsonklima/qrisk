@@ -1,0 +1,213 @@
+<!-- content -->
+<div id="page-wrapper">
+    <!-- title -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 page-title-div">
+          <div class="well">
+              {{::pageTitle}}
+              <div class="pull-right">
+                  <a href="#/risco.get" class="btn btn-default btn-circle">
+                      <i class="glyphicon glyphicon-arrow-left"></i>
+                  </a>  
+              </div>
+          </div> 
+      </div>
+    </div>
+    <!-- title -->
+    <!-- messages -->
+    <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+           <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
+           <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert> 
+       </div>
+    </div>
+    <!-- messages --> 
+    <!-- row -->
+    <div class="row">
+        <!-- col -->
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+            <!-- panel -->
+            <div class="panel panel-primary">
+                <!-- panel head -->
+                <div class="panel-heading">
+                    Detalhes <small>informações</small>
+                </div>
+                <!-- panel head -->
+                <!-- panel body -->
+                <div class="panel-body">
+                    <!-- table div -->
+                    <div class="table">
+                        <!-- table -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="col-xs-4 col-md-4 col-lg-4">Título</th>
+                                    <th>{{::risco.titulo}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Causa</td>
+                                    <td>{{::risco.causa}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Efeito</td>
+                                    <td>{{::risco.efeito}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Categoria EAR</td>
+                                    <td>{{::risco.ear_categoria_nome}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tipo</td>
+                                    <td>{{::risco.risco_tipo_nome}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Análises</td>
+                                    <td>{{risco.qtd_analises}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Status</td>
+                                    <td>{{::risco.status_nome}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- table -->
+                    </div>
+                    <!-- table div -->
+                </div>
+                <!-- panel body -->
+            </div>
+            <!-- panel -->
+            <!-- panel -->
+            <div class="panel panel-primary" ng-show="risco.qtd_analises>0">
+                <!-- panel head -->
+                <div class="panel-heading">
+                    Análise Qualitativa <small>média de análises</small>
+                </div>
+                <!-- panel head -->
+                <!-- panel body -->
+                <div class="panel-body panel-responsive"> 
+                    <!-- table div: analise qualitativa do risco -->
+                    <div class="table-responsive">
+                        <!-- table -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th><small>Projeto</small></th>
+                                    <th class="align-center"><small>Custo</small></th>
+                                    <th class="align-center"><small>Cronograma</small></th>
+                                    <th class="align-center"><small>Escopo</small></th>
+                                    <th class="align-center"><small>Qualidade</small></th>
+                                    <th class="align-center"><small>Probab.</small></th>
+                                    <th class="align-center">
+                                        <small>Imp. Consol.</small>
+                                        <!-- tooltip -->
+                                        <i class="glyphicon glyphicon-info-sign">
+                                            <md-tooltip md-visible="tooltip1" md-direction="top">
+                                                Maior valor entre custo, cronograma, escopo e qualidade
+                                            </md-tooltip>
+                                        </i>
+                                        <!-- tooltip -->
+                                    </th>
+                                    <th class="align-center">
+                                        <small>Grau Q.</small>
+                                        <!-- tooltip -->
+                                        <i class="glyphicon glyphicon-info-sign">
+                                            <md-tooltip md-visible="tooltip2" md-direction="top">
+                                                Impacto consolidado multiplicado pela probabilidade
+                                            </md-tooltip>
+                                        </i>
+                                        <!-- tooltip -->
+                                    </th>
+                                    <th class="align-center"><small>
+                                        Prioridade</small>
+                                        <!-- tooltip -->
+                                        <i class="glyphicon glyphicon-info-sign">
+                                            <md-tooltip md-visible="tooltip3" md-direction="top">
+                                                Baixo (até 0,3) - médio (0,3 até 0,7) - alto (acima de 0,7)
+                                            </md-tooltip>
+                                        </i>
+                                        <!-- tooltip -->
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="analise_geral in risco_analise_geral">
+                                    <td>{{::analise_geral.projeto_nome}}</td>
+                                    <td class="align-center">{{::analise_geral.custo}}</td>
+                                    <td class="align-center">{{::analise_geral.cronograma}}</td>
+                                    <td class="align-center">{{::analise_geral.escopo}}</td>
+                                    <td class="align-center">{{::analise_geral.qualidade}}</td>
+                                    <td class="align-center">{{::analise_geral.probabilidade}}</td>
+                                    <td class="align-center">{{::analise_geral.impacto_consolidado}}</td>
+                                    <td class="align-center">{{::analise_geral.grau_qualificacao}}</td>
+                                    <td class="align-center {{analise_geral.prioridade}}">{{::analise_geral.prioridade}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- table -->
+                    </div>
+                    <!-- table div: analise qualitativa do risco -->
+                </div>
+                <!-- panel body -->
+            </div>
+            <!-- panel -->
+            <!-- panel -->
+            <div class="panel panel-primary" ng-show="risco.qtd_analises>0">
+                <!-- panel head -->
+                <div class="panel-heading">
+                    Análise Detalhada <small>análises individuais</small>
+                </div>
+                <!-- panel head -->
+                <!-- panel body -->
+                <div class="panel-body panel-responsive"> 
+                    <!-- table div: analise qualitativa do risco -->
+                    <div class="table-responsive">
+                        <!-- table -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th><small>Usuário</small></th>
+                                    <th><small>Projeto</small></th>
+                                    <th class="align-center"><small>Custo</small></th>
+                                    <th class="align-center"><small>Cronogr.</small></th>
+                                    <th class="align-center"><small>Escopo</small></th>
+                                    <th class="align-center"><small>Qualidade</small></th>
+                                    <th class="align-center"><small>Probab.</small></th>
+                                    <th class="align-center"><small>Data</small></th>
+                                    <th class="align-center"><small>Ações</small></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="analise_detalhada in risco_analise_detalhada">
+                                    <td><small>{{::analise_detalhada.usuario_nome}}</small></td>
+                                    <td><small>{{::analise_detalhada.projeto_nome | ellipsis:12}}</small></td>
+                                    <td class="align-center"><small>{{::analise_detalhada.custo}}</small></td>
+                                    <td class="align-center"><small>{{::analise_detalhada.cronograma}}</small></td>
+                                    <td class="align-center"><small>{{::analise_detalhada.escopo}}</small></td>
+                                    <td class="align-center"><small>{{::analise_detalhada.qualidade}}</small></td>
+                                    <td class="align-center"><small>{{::analise_detalhada.probabilidade}}</small></td>
+                                    <td class="align-center"><small>{{::analise_detalhada.data_cadastro}}</small></td>
+                                    <td class="align-center td-button">
+                                        <a class="action-btn" href="" ng-click="delItem(analise_detalhada)">
+                                            <i class="glyphicon glyphicon-trash small-icon" title="Excluir"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- table -->
+                    </div>
+                    <!-- table div: analise qualitativa do risco -->
+                </div>
+                <!-- panel body -->
+            </div>
+            <!-- panel -->
+        </div>
+        <!-- col -->
+    </div>
+    <!-- row -->
+</div>
+<!-- content -->

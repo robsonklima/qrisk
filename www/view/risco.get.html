@@ -1,0 +1,115 @@
+<div id="page-wrapper">
+   <!-- title -->
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 page-title-div">
+          <div class="well">
+              {{::pageTitle}}
+              <div class="pull-right">
+                  <a href="#/risco.add" class="btn btn-primary btn-circle">
+                      <i class="glyphicon glyphicon-plus"></i>
+                  </a>
+                  <a href="#/dashboard" class="btn btn-default btn-circle">
+                      <i class="glyphicon glyphicon-arrow-left"></i>
+                  </a>  
+              </div>
+          </div> 
+      </div>
+   </div>
+   <!-- title -->
+   <!-- messages -->
+   <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+           <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
+           <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert> 
+       </div>
+    </div>
+   <!-- messages --> 
+   <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+         <!-- search -->
+         <!-- items -->
+         <div class="row">
+            <div class="col-xs-3 col-md-3">
+               <select ng-model="entryLimit" class="form-control">
+                  <option>5</option>
+                  <option>10</option>
+                  <option>20</option>
+                  <option>50</option>
+                  
+               </select>
+            </div>
+            <!-- items -->
+            <!-- search -->
+            <div class="col-xs-9 col-md-9">
+               <input class="form-control" type="text" ng-model="search" ng-change="filter()" 
+                  placeholder="Search..." class="form-control" />
+            </div>
+         </div>
+         <!-- search -->
+         <!-- search label --> 
+         <div class="row">
+            <div class="col-xs-12 col-md-12 bottom-padding-12">
+               <h5 class="desc-filter">Filtering {{ filtered.length }} of {{ totalItems}} {{pageTitle}}</h5>
+            </div>
+         </div>
+         <!-- search label -->
+         <!-- search -->
+         <!-- table -->
+         <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12" ng-show="filteredItems > 0">
+               <table class="table table-striped table-bordered">
+                  <thead>
+                     <th>
+                         Título 
+                         <span class="icon-search">
+                             <a href="" ng-click="sort_by('titulo');"><i class="glyphicon glyphicon-sort"></i></a>
+                         </span>  
+                     </th>
+                     <th>
+                         Análises 
+                         <span class="icon-search">
+                             <a href="" ng-click="sort_by('qtd_analises');"><i class="glyphicon glyphicon-sort"></i></a>
+                         </span>  
+                     </th>
+                     <th class="align-center" colspan="3">Ações</th>
+                  </thead>
+                  <tbody>
+                     <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+                        <td>{{::data.titulo | ellipsis: 24}}</td>
+                        <td>{{::data.qtd_analises}}</td>
+                        <td class="align-center td-button">
+                            <a href="#/risco.info/{{data.id}}">
+                                <i class="glyphicon glyphicon-search" title="Detalhes"></i>
+                            </a>
+                        </td>
+                        <td class="align-center td-button">
+                            <a href="#/risco.edt/{{data.id}}">
+                                <i class="glyphicon glyphicon-edit" title="Edit"></i>
+                            </a>
+                        </td>
+                        <td class="align-center td-button">
+                            <a href="" ng-click="delItem(data)">
+                                <i class="glyphicon glyphicon-trash" title="Delete"></i>
+                            </a>
+                         </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <!-- pagination -->
+               <div class="align-center" ng-show="filteredItems > 0">
+                  <div pagination="" page="currentPage" on-select-page="setPage(page)" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
+               </div> 
+               <!-- pagination -->
+            </div>
+            <!-- table -->
+            <!-- local messages -->
+            <div class="col-xs-12 col-sm-12 col-md-12" >
+                <ui-alert title="Mensagem" type="warning" message="'Your search returned no results.'" 
+                          ng-show="filteredItems == 0"></ui-alert>
+            </div>
+            <!-- local messages -->
+         </div>
+      </div>
+   </div>
+</div>

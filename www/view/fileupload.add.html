@@ -1,0 +1,66 @@
+<!-- content -->
+<div id="page-wrapper">
+    <!-- row -->
+    <div class="row">
+       <!-- title -->
+       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 page-title-div">
+          <div class="well">
+              {{::pageTitle}}
+              <div class="pull-right">
+                  <a href="#/fileupload.get" class="btn btn-default btn-circle">
+                      <i class="glyphicon glyphicon-arrow-left"></i>
+                  </a>
+              </div>
+          </div>
+       </div>
+       <!-- title -->
+    </div>
+    <!-- messages -->
+    <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+           <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
+           <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert>
+       </div>
+    </div>
+    <!-- messages -->
+    <!-- row -->
+    <div class="row">
+        <!-- col -->
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+            <!-- form -->
+            <form name="form">
+                <div class="file-upload">
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <input class="form-control" ng-model="descricao" type="text" name="descricao"
+                               ng-required="true" ng-minlength="5"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">File (XML)</label>
+                        <input class="form-control" file-model="file" type="file" name="file"
+                               ng-required="true"/>
+                    </div>
+                </div>
+            </form>
+            <!-- form -->
+            <!-- form messages -->
+            <div ng-show="form.descricao.$dirty" ng-messages="form.descricao.$error">
+                <div ng-message="required" class="alert alert-danger">
+                    Please, type Description.
+                </div>
+                <div ng-message="minlength" class="alert alert-danger">
+                    The description field must be at least 5 characters long.
+                </div>
+            </div>
+            <!-- form messages -->
+            <!-- buttons -->
+            <button class="btn btn-primary btn-block" ng-click="uploadFile()"
+                ng-disabled="form.$invalid">Upload</button>
+            <!-- buttons -->
+        </div>
+        <!-- col -->
+    </div>
+    <!-- row -->
+</div>
+<!-- content -->

@@ -1,0 +1,84 @@
+<div id="page-wrapper">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 page-title-div">
+          <div class="well">
+              {{::pageTitle}}
+              <div class="pull-right">
+                  <a href="#/menu.get" class="btn btn-default btn-circle">
+                      <i class="glyphicon glyphicon-arrow-left"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- messages -->
+    <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+           <ui-alert title="Erro" type="danger" message="error" ng-if="error"></ui-alert>
+           <ui-alert title="Mensagem" type="success" message="success" ng-if="success"></ui-alert>
+           <ui-alert title="Mensagem" type="warning" message="warning" ng-if="warning"></ui-alert>
+       </div>
+    </div>
+    <!-- messages -->
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Update
+                </div>
+                <div class="panel-body">
+                    <form name="form">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input ng-model="menu.nome" class="form-control" type="text" name="nome"
+                                   ng-required="true" ng-minlength="5"/>
+                            <!-- form group validation -->
+                            <div ng-show="form.nome.$dirty" ng-messages="form.nome.$error">
+                                <p class="help-block-error" ng-message="required">Please, type the name!</p>
+                                <p class="help-block-error" ng-message="minlength">The name field must be at least 5 characters long.</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Icone</label>
+                            <a href="http://getbootstrap.com/components/#input-groups" target="_blank">
+                                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                            </a>
+                            <input ng-model="menu.icone" class="form-control" type="text" name="icone"
+                                   ng-minlength="1"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Order</label>
+                            <input ng-model="menu.ordem" class="form-control" type="text" name="icone"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Url</label>
+                            <input ng-model="menu.url" class="form-control" type="text" name="url"
+                                   ng-required="true" ng-minlength="5"/>
+                            <!-- form group validation -->
+                            <div ng-show="form.url.$dirty" ng-messages="form.url.$error">
+                                <p class="help-block-error" ng-message="required">Por favor, preencha o campo url!</p>
+                                <p class="help-block-error" ng-message="minlength">O campo url deve ter no mínimo 5 caracteres.</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Status</label>
+                            <select class="form-control" ng-model="menu.id_status" ng-required="true" name="id_status"
+                                    ng-options="status.id as status.nome for status in statuss | orderBy:'nome'">
+                                <option value="">Select the status</option>
+                            </select>
+                            <!-- form group validation -->
+                            <div ng-show="form.id_status.$dirty" ng-messages="form.id_status.$error">
+                                <p class="help-block-error" ng-message="required">Please, type the status!</p>
+                            </div>
+                            <!-- form group validation -->
+                        </div>
+                    </form>
+                    <button class="btn btn-primary btn-block" ng-click="addItem(menu)"
+                        ng-disabled="form.$invalid">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

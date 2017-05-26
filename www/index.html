@@ -1,0 +1,131 @@
+<html ng-app="qrisk">
+    <head>
+        <!-- meta tags -->
+        <meta charset="UTF-8">
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+        <!-- title -->
+        <title>QRisk - Risk Management Model</title>
+        <!-- styles -->
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="lib/sidenav/sidenav.min.css">
+        <link rel="stylesheet" type="text/css" href="lib/sb2/css/sb2.min.css">
+        <link rel="stylesheet" type="text/css" href="lib/material/angular-material.min.css">
+        <!-- libraries -->
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular/angular-messages.js"></script>
+        <script src="lib/angular/angular-route.js"></script>
+        <script src="lib/angular/angular-cookies.js"></script>
+        <script src="lib/angular/angular-animate.min.js"></script>
+        <script src="lib/angular/angular-aria.min.js"></script>
+        <script src="lib/angular/angular-material.min.js"></script>
+        <script src="lib/angular/angular-locale_pt-br.js"></script>
+        <script src="lib/bootstrap/ui-bootstrap-tpls-0.10.0.min.js"></script>
+        <script src="lib/ui/ui.js"></script>
+        <!-- app start -->
+        <script src="js/app.js"></script>
+        <!-- controllers -->
+        <script src="js/controllers/earcat.get.ctrl.js"></script>
+        <script src="js/controllers/earcat.add.ctrl.js"></script>
+        <script src="js/controllers/earcat.edt.ctrl.js"></script>
+        <script src="js/controllers/projeto.get.ctrl.js"></script>
+        <script src="js/controllers/projeto.add.ctrl.js"></script>
+        <script src="js/controllers/projeto.edt.ctrl.js"></script>
+        <script src="js/controllers/projeto.info.ctrl.js"></script>
+        <script src="js/controllers/demanda.get.ctrl.js"></script>
+        <script src="js/controllers/demanda.add.ctrl.js"></script>
+        <script src="js/controllers/demanda.edt.ctrl.js"></script>
+        <script src="js/controllers/recurso.get.ctrl.js"></script>
+        <script src="js/controllers/recurso.add.ctrl.js"></script>
+        <script src="js/controllers/recurso.edt.ctrl.js"></script>
+        <script src="js/controllers/recursofuncao.get.ctrl.js"></script>
+        <script src="js/controllers/recursofuncao.add.ctrl.js"></script>
+        <script src="js/controllers/recursofuncao.edt.ctrl.js"></script>
+        <script src="js/controllers/usuario.get.ctrl.js"></script>
+        <script src="js/controllers/usuario.add.ctrl.js"></script>
+        <script src="js/controllers/usuario.edt.ctrl.js"></script>
+        <script src="js/controllers/usuarioperfil.get.ctrl.js"></script>
+        <script src="js/controllers/usuarioperfil.add.ctrl.js"></script>
+        <script src="js/controllers/usuarioperfil.edt.ctrl.js"></script>
+        <script src="js/controllers/status.get.ctrl.js"></script>
+        <script src="js/controllers/status.add.ctrl.js"></script>
+        <script src="js/controllers/status.edt.ctrl.js"></script>
+        <script src="js/controllers/risco.get.ctrl.js"></script>
+        <script src="js/controllers/risco.add.ctrl.js"></script>
+        <script src="js/controllers/risco.edt.ctrl.js"></script>
+        <script src="js/controllers/risco.info.ctrl.js"></script>
+        <script src="js/controllers/riscoanalise.get.ctrl.js"></script>
+        <script src="js/controllers/riscoanalise.add.ctrl.js"></script>
+        <script src="js/controllers/riscoanalise.info.ctrl.js"></script>
+        <script src="js/controllers/riscotipo.get.ctrl.js"></script>
+        <script src="js/controllers/riscotipo.add.ctrl.js"></script>
+        <script src="js/controllers/riscotipo.edt.ctrl.js"></script>
+        <script src="js/controllers/status.get.ctrl.js"></script>
+        <script src="js/controllers/login.ctrl.js"></script>
+        <script src="js/controllers/sidenav.ctrl.js"></script>
+        <script src="js/controllers/dashboard.ctrl.js"></script>
+        <script src="js/controllers/fileupload.add.ctrl.js"></script>
+        <script src="js/controllers/fileupload.get.ctrl.js"></script>
+        <script src="js/controllers/log.get.ctrl.js"></script>
+        <script src="js/controllers/menu.get.ctrl.js"></script>
+        <script src="js/controllers/menu.edt.ctrl.js"></script>
+        <script src="js/controllers/menu.add.ctrl.js"></script>
+        <script src="js/controllers/problema.add.ctrl.js"></script>
+        <!-- services -->
+        <script src="js/services/loginAPIService.js"></script>
+        <script src="js/services/earSubCatsAPIService.js"></script>
+        <script src="js/services/earCatsAPIService.js"></script>
+        <script src="js/services/projetosAPIService.js"></script>
+        <script src="js/services/demandasAPIService.js"></script>
+        <script src="js/services/recursosAPIService.js"></script>
+        <script src="js/services/recursosFuncaoAPIService.js"></script>
+        <script src="js/services/usuariosAPIService.js"></script>
+        <script src="js/services/usuariosPerfisAPIService.js"></script>
+        <script src="js/services/statusAPIService.js"></script>
+        <script src="js/services/fileUploadAPIService.js"></script>
+        <script src="js/services/riscosTipoAPIService.js"></script>
+        <script src="js/services/riscosAPIService.js"></script>
+        <script src="js/services/riscosAnaliseAPIService.js"></script>
+        <script src="js/services/logsAPIService.js"></script>
+        <script src="js/services/menusAPIService.js"></script>
+        <script src="js/services/riscosDemandaAPIService.js"></script>
+        <script src="js/services/riscosProjetoAPIService.js"></script>
+        <!-- directives -->
+        <script src="js/directives/uiAlertDirective.js"></script>
+        <script src="js/directives/uiDateDirective.js"></script>
+        <script src="js/directives/uiPhoneDirective.js"></script>
+        <script src="js/directives/uipagingDirective.js"></script>
+        <script src="js/directives/uiFileModelDirective.js"></script>
+        <script src="js/directives/uiCheckBoxDirective.js"></script>
+        <!-- constants -->
+        <script src="js/value/configValue.js"></script>
+        <!-- configurations -->
+        <script src="js/config/routeConfig.js"></script>
+        <script src="js/config/interceptorsConfig.js"></script>
+        <!-- filters -->
+        <script src="js/filters/stringCapitalizer.js"></script>
+        <script src="js/filters/stringEllipsis.js"></script>
+        <script src="js/filters/paginationStartFrom.js"></script>
+        <!-- interceptors -->
+        <script src="js/interceptors/timestampInterceptor.js"></script>
+        <script src="js/interceptors/errorInterceptor.js"></script>
+        <script src="js/interceptors/loadingInterceptor.js"></script>
+        <!-- factories -->
+        <script src="js/factories/base64Factory.js"></script>
+        <!-- fusioncharts -->
+        <script src="lib/fusioncharts/fusioncharts.js"></script>
+        <script src="lib/fusioncharts/angular-fusioncharts.min.js"></script>
+        <script src="lib/fusioncharts/themes/fusioncharts.theme.fint.js"></script>
+    </head>
+    <body class="material-init">
+        <!-- sidenav -->
+        <div ng-include="'view/sidenav.html'" ng-if="showInclude"></div>
+        <!-- content -->
+        <div ng-view ng-hide="loading"></div>    
+        <!-- loading -->
+        <div class="loading" ng-show="loading"></div>
+        <!--<md-progress-linear ng-show="loading" md-mode="indeterminate"></md-progress-linear>-->
+        <!-- footer -->
+        <div ng-hide="loading" ng-include="'view/footer.html'"></div>
+    </body>
+</html>
